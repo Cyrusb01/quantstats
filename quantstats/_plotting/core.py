@@ -50,7 +50,7 @@ _sns.set(font_scale=1.1, rc={
     'ytick.color': '#666666'
 })
 
-_FLATUI_COLORS = ["#fedd78", "#348dc1", "#af4b64",
+_FLATUI_COLORS = ["pink", "green", "#af4b64",
                   "#4fa487", "#9b59b6", "#808080"]
 _GRAYSCALE_COLORS = ['silver', '#222222', 'gray'] * 3
 
