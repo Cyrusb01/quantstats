@@ -184,7 +184,7 @@ def plot_returns_bars(returns, benchmark=None,
 
 def plot_timeseries(returns, benchmark=None,
                     title="Returns", compound=False, cumulative=True,
-                    fill=False, returns_label="Strategy",
+                    fill=False, returns_label="Strategy", benchmark_label = "Benchmark",
                     hline=None, hlw=None, hlcolor="red", hllabel="",
                     percent=True, match_volatility=False, log_scale=False,
                     resample=None, lw=1.5, figsize=(10, 6), ylabel="",
@@ -243,7 +243,7 @@ def plot_timeseries(returns, benchmark=None,
     ax.set_facecolor('white')
 
     if isinstance(benchmark, _pd.Series):
-        ax.plot(benchmark, lw=lw, ls=ls, label="Benchmark", color=colors[0])
+        ax.plot(benchmark, lw=lw, ls=ls, label= benchmark_label, color=colors[0])
 
     alpha = .25 if grayscale else 1
     ax.plot(returns, lw=lw, label=returns_label, color=colors[1], alpha=alpha)
@@ -399,6 +399,7 @@ def plot_histogram(returns, resample="M", bins=20,
 
 def plot_rolling_stats(returns, benchmark=None, title="",
                        returns_label="Strategy",
+                       benchmark_label="Benchmark",
                        hline=None, hlw=None, hlcolor="red", hllabel="",
                        lw=1.5, figsize=(10, 6), ylabel="",
                        grayscale=False, fontname="Arial", subtitle=True,
@@ -416,7 +417,7 @@ def plot_rolling_stats(returns, benchmark=None, title="",
     if isinstance(benchmark, _pd.Series):
         df['Benchmark'] = benchmark[benchmark.index.isin(returns.index)]
         df = df[['Benchmark', returns_label]].dropna()
-        ax.plot(df['Benchmark'], lw=lw, label="Benchmark",
+        ax.plot(df['Benchmark'], lw=lw, label=benchmark_label,
                 color=colors[0], alpha=.8)
 
     ax.plot(df[returns_label].dropna(), lw=lw,

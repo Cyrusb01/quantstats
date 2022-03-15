@@ -253,7 +253,7 @@ def earnings(returns, start_balance=1e5, mode="comp",
     return None
 
 
-def returns(returns, benchmark=None,
+def returns(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "Benchmark",
             grayscale=False, figsize=(10, 6),
             fontname='Arial', lw=1.5,
             match_volatility=False, compound=True, cumulative=True,
@@ -277,7 +277,8 @@ def returns(returns, benchmark=None,
 
     fig = _core.plot_timeseries(returns, benchmark, title,
                                 ylabel=ylabel,
-                                returns_label="blockforce",
+                                returns_label= strategy_name,
+                                benchmark_label=benchmark_name,
                                 match_volatility=match_volatility,
                                 log_scale=False,
                                 resample=resample,
@@ -293,7 +294,7 @@ def returns(returns, benchmark=None,
         return fig
 
 
-def log_returns(returns, benchmark=None,
+def log_returns(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "Benchmark",
                 grayscale=False, figsize=(10, 5),
                 fontname='Arial', lw=1.5,
                 match_volatility=False, compound=True, cumulative=True,
@@ -320,6 +321,8 @@ def log_returns(returns, benchmark=None,
 
     fig = _core.plot_timeseries(returns, benchmark, title,
                                 ylabel=ylabel,
+                                returns_label= strategy_name,
+                                benchmark_label=benchmark_name,
                                 match_volatility=match_volatility,
                                 log_scale=True,
                                 resample=resample,
@@ -527,7 +530,7 @@ def rolling_beta(returns, benchmark,
         return fig
 
 
-def rolling_volatility(returns, benchmark=None,
+def rolling_volatility(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "Benchmark",
                        period=126, period_label="6-Months",
                        periods_per_year=252,
                        lw=1.5, fontname='Arial', grayscale=False,
@@ -545,6 +548,8 @@ def rolling_volatility(returns, benchmark=None,
                                    hline=returns.mean(),
                                    hlw=1.5,
                                    ylabel=ylabel,
+                                   returns_label= strategy_name,
+                                   benchmark_label=benchmark_name,
                                    title='Rolling Volatility (%s)' % period_label,
                                    fontname=fontname,
                                    grayscale=grayscale,
@@ -556,7 +561,7 @@ def rolling_volatility(returns, benchmark=None,
         return fig
 
 
-def rolling_sharpe(returns, benchmark=None, rf=0.,
+def rolling_sharpe(returns, benchmark=None, strategy_name = "Strategy", rf=0., 
                    period=126, period_label="6-Months",
                    periods_per_year=252,
                    lw=1.25, fontname='Arial', grayscale=False,
@@ -576,6 +581,7 @@ def rolling_sharpe(returns, benchmark=None, rf=0.,
                                    hline=returns.mean(),
                                    hlw=1.5,
                                    ylabel=ylabel,
+                                   returns_label= strategy_name,
                                    title='Rolling Sharpe (%s)' % period_label,
                                    fontname=fontname,
                                    grayscale=grayscale,
@@ -587,7 +593,7 @@ def rolling_sharpe(returns, benchmark=None, rf=0.,
         return fig
 
 
-def rolling_sortino(returns, benchmark=None, rf=0.,
+def rolling_sortino(returns, benchmark=None, strategy_name = "Strategy", rf=0.,
                     period=126, period_label="6-Months",
                     periods_per_year=252,
                     lw=1.25, fontname='Arial', grayscale=False,
@@ -607,6 +613,7 @@ def rolling_sortino(returns, benchmark=None, rf=0.,
                                    hline=returns.mean(),
                                    hlw=1.5,
                                    ylabel=ylabel,
+                                   returns_label= strategy_name,
                                    title='Rolling Sortino (%s)' % period_label,
                                    fontname=fontname,
                                    grayscale=grayscale,
