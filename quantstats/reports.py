@@ -129,7 +129,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
 
     # plots
     figfile = _utils._file_stream()
-    _plots.returns(returns, benchmark, grayscale=grayscale,
+    _plots.returns(returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name,
                    figsize=(8, 5), subtitle=False,
                    savefig={'fname': figfile, 'format': figfmt},
                    show=False, ylabel=False, cumulative=compounded,
@@ -137,7 +137,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     tpl = tpl.replace('{{returns}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
-    _plots.log_returns(returns, benchmark, grayscale=grayscale,
+    _plots.log_returns(returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name,
                        figsize=(8, 4), subtitle=False,
                        savefig={'fname': figfile, 'format': figfmt},
                        show=False, ylabel=False, cumulative=compounded,
@@ -146,7 +146,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
 
     if benchmark is not None:
         figfile = _utils._file_stream()
-        _plots.returns(returns, benchmark, match_volatility=True,
+        _plots.returns(returns, benchmark, match_volatility=True, strategy_name=strategy_name, benchmark_name = benchmark_name,
                        grayscale=grayscale, figsize=(8, 4), subtitle=False,
                        savefig={'fname': figfile, 'format': figfmt},
                        show=False, ylabel=False, cumulative=compounded,
@@ -189,7 +189,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
         tpl = tpl.replace('{{rolling_beta}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
-    _plots.rolling_volatility(returns, benchmark, grayscale=grayscale,
+    _plots.rolling_volatility(returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name,
                               figsize=(8, 3), subtitle=False,
                               savefig={'fname': figfile, 'format': figfmt},
                               show=False, ylabel=False, period=win_half_year,
@@ -197,7 +197,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     tpl = tpl.replace('{{rolling_vol}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
-    _plots.rolling_sharpe(returns, grayscale=grayscale,
+    _plots.rolling_sharpe(returns, grayscale=grayscale, strategy_name=strategy_name, 
                           figsize=(8, 3), subtitle=False,
                           savefig={'fname': figfile, 'format': figfmt},
                           show=False, ylabel=False, period=win_half_year,
@@ -205,7 +205,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     tpl = tpl.replace('{{rolling_sharpe}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
-    _plots.rolling_sortino(returns, grayscale=grayscale,
+    _plots.rolling_sortino(returns, grayscale=grayscale, strategy_name=strategy_name, 
                            figsize=(8, 3), subtitle=False,
                            savefig={'fname': figfile, 'format': figfmt},
                            show=False, ylabel=False, period=win_half_year,
