@@ -55,7 +55,7 @@ def _match_dates(returns, benchmark):
 
 
 def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "Benchmark", rf=0., grayscale=False,
-         title='Strategy Tearsheet', output=None, compounded=True,
+         custom_colors = None, title='Strategy Tearsheet', output=None, compounded=True,
          periods_per_year=252, download_filename='quantstats-tearsheet.html',
          figfmt='svg', template_path=None, match_dates=False):
 
@@ -130,7 +130,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     # plots
     figfile = _utils._file_stream()
     _plots.returns(returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name,
-                   figsize=(8, 5), subtitle=False,
+                   custom_colors = custom_colors, figsize=(8, 5), subtitle=False,
                    savefig={'fname': figfile, 'format': figfmt},
                    show=False, ylabel=False, cumulative=compounded,
                    prepare_returns=False)

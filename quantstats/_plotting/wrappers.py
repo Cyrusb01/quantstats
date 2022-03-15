@@ -254,7 +254,7 @@ def earnings(returns, start_balance=1e5, mode="comp",
 
 
 def returns(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "Benchmark",
-            grayscale=False, figsize=(10, 6),
+            custom_colors = None, grayscale=False, figsize=(10, 6),
             fontname='Arial', lw=1.5,
             match_volatility=False, compound=True, cumulative=True,
             resample=None, ylabel="Cumulative Returns",
@@ -279,6 +279,7 @@ def returns(returns, benchmark=None, strategy_name = "Strategy", benchmark_name 
                                 ylabel=ylabel,
                                 returns_label= strategy_name,
                                 benchmark_label=benchmark_name,
+                                custom_colors = custom_colors,
                                 match_volatility=match_volatility,
                                 log_scale=False,
                                 resample=resample,

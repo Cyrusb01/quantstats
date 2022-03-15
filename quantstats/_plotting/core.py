@@ -50,13 +50,16 @@ _sns.set(font_scale=1.1, rc={
     'ytick.color': '#666666'
 })
 
-_FLATUI_COLORS = ["pink", "green", "#af4b64",
+_FLATUI_COLORS = ["#fedd78", "#348dc1", "#af4b64",
                   "#4fa487", "#9b59b6", "#808080"]
 _GRAYSCALE_COLORS = ['silver', '#222222', 'gray'] * 3
 
 
-def _get_colors(grayscale):
-    colors = _FLATUI_COLORS
+def _get_colors(grayscale, custom_colors = None):
+    if custom_colors:
+        colors = custom_colors
+    else:
+        colors = _FLATUI_COLORS
     ls = '-'
     alpha = .8
     if grayscale:
@@ -183,7 +186,7 @@ def plot_returns_bars(returns, benchmark=None,
 
 
 def plot_timeseries(returns, benchmark=None,
-                    title="Returns", compound=False, cumulative=True,
+                    title="Returns", compound=False, cumulative=True, custom_colors = None,
                     fill=False, returns_label="Strategy", benchmark_label = "Benchmark",
                     hline=None, hlw=None, hlcolor="red", hllabel="",
                     percent=True, match_volatility=False, log_scale=False,
@@ -191,7 +194,7 @@ def plot_timeseries(returns, benchmark=None,
                     grayscale=False, fontname="Arial",
                     subtitle=True, savefig=None, show=True):
 
-    colors, ls, alpha = _get_colors(grayscale)
+    colors, ls, alpha = _get_colors(grayscale, custom_colors)
 
     returns.fillna(0, inplace=True)
     if isinstance(benchmark, _pd.Series):
