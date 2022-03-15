@@ -277,6 +277,7 @@ def returns(returns, benchmark=None,
 
     fig = _core.plot_timeseries(returns, benchmark, title,
                                 ylabel=ylabel,
+                                returns_label="blockforce",
                                 match_volatility=match_volatility,
                                 log_scale=False,
                                 resample=resample,
