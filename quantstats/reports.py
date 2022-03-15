@@ -54,7 +54,7 @@ def _match_dates(returns, benchmark):
     return returns, benchmark
 
 
-def html(returns, benchmark=None, rf=0., grayscale=False,
+def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "Benchmark", rf=0., grayscale=False,
          title='Strategy Tearsheet', output=None, compounded=True,
          periods_per_year=252, download_filename='quantstats-tearsheet.html',
          figfmt='svg', template_path=None, match_dates=False):
@@ -81,14 +81,14 @@ def html(returns, benchmark=None, rf=0., grayscale=False,
     tpl = tpl.replace('{{title}}', title)
     tpl = tpl.replace('{{v}}', __version__)
 
-    mtrx = metrics(returns=returns, benchmark=benchmark,
+    mtrx = metrics(returns=returns, benchmark=benchmark, strategy_name=strategy_name, benchmark_name=benchmark_name,
                    rf=rf, display=False, mode='full',
                    sep=True, internal="True",
                    compounded=compounded,
                    periods_per_year=periods_per_year,
                    prepare_returns=False)[2:]
 
-    mtrx.index.name = 'Metric'
+    mtrx.index.name = 'Metrics'
     tpl = tpl.replace('{{metrics}}', _html_table(mtrx))
     tpl = tpl.replace('<tr><td></td><td></td><td></td></tr>',
                       '<tr><td colspan="3"><hr></td></tr>')
@@ -99,9 +99,9 @@ def html(returns, benchmark=None, rf=0., grayscale=False,
         yoy = _stats.compare(
             returns, benchmark, "A", compounded=compounded,
             prepare_returns=False)
-        yoy.columns = ['Benchmark', 'Strategy', 'Multiplier', 'Won']
+        yoy.columns = [benchmark_name, strategy_name, 'Multiplier', 'Won']
         yoy.index.name = 'Year'
-        tpl = tpl.replace('{{eoy_title}}', '<h3>EOY Returns vs Benchmark</h3>')
+        tpl = tpl.replace('{{eoy_title}}', f'<h3>EOY {strategy_name} vs {benchmark_name}</h3>')
         tpl = tpl.replace('{{eoy_table}}', _html_table(yoy))
     else:
         # pct multiplier
@@ -117,8 +117,10 @@ def html(returns, benchmark=None, rf=0., grayscale=False,
         tpl = tpl.replace('{{eoy_title}}', '<h3>EOY Returns</h3>')
         tpl = tpl.replace('{{eoy_table}}', _html_table(yoy))
 
+    
     dd = _stats.to_drawdown_series(returns)
-    dd_info = _stats.drawdown_details(dd).sort_values(
+    
+    dd_info = _stats.drawdown_details(dd).sort_values( 
         by='max drawdown', ascending=True)[:10]
 
     dd_info = dd_info[['start', 'end', 'max drawdown', 'days']]
@@ -151,6 +153,7 @@ def html(returns, benchmark=None, rf=0., grayscale=False,
                        prepare_returns=False)
         tpl = tpl.replace('{{vol_returns}}', _embed_figure(figfile, figfmt))
 
+    
     figfile = _utils._file_stream()
     _plots.yearly_returns(returns, benchmark, grayscale=grayscale,
                           figsize=(8, 4), subtitle=False,
@@ -343,7 +346,7 @@ def basic(returns, benchmark=None, rf=0., grayscale=False,
           prepare_returns=False)
 
 
-def metrics(returns, benchmark=None, rf=0., display=True,
+def metrics(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "Benchmark", rf=0., display=True,
             mode='basic', sep=False, compounded=True,
             periods_per_year=252, prepare_returns=True,
             match_dates=False, **kwargs):
@@ -584,9 +587,9 @@ def metrics(returns, benchmark=None, rf=0., display=True,
     metrics = metrics.T
 
     if "benchmark" in df:
-        metrics.columns = ['Strategy', 'Benchmark']
+        metrics.columns = [strategy_name, benchmark_name]
     else:
-        metrics.columns = ['Strategy']
+        metrics.columns = [strategy_name]
 
     if display:
         print(_tabulate(metrics, headers="keys", tablefmt='simple'))
