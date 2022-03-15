@@ -600,7 +600,7 @@ def metrics(returns, benchmark=None, strategy_name = "Strategy", benchmark_name 
     return metrics
 
 
-def plots(returns, benchmark=None, grayscale=False,
+def plots(returns, benchmark=None, grayscale=False, strategy_name = "Strategy", benchmark_name = "Benchmark",
           figsize=(8, 5), mode='basic', compounded=True,
           periods_per_year=252, prepare_returns=True, match_dates=False):
 
@@ -627,18 +627,18 @@ def plots(returns, benchmark=None, grayscale=False,
         if match_dates is True:
             returns, benchmark = _match_dates(returns, benchmark)
 
-    _plots.returns(returns, benchmark, grayscale=grayscale,
+    _plots.returns(returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name,
                    figsize=(figsize[0], figsize[0]*.6),
                    show=True, ylabel=False,
                    prepare_returns=False)
 
-    _plots.log_returns(returns, benchmark, grayscale=grayscale,
+    _plots.log_returns(returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name,
                        figsize=(figsize[0], figsize[0]*.5),
                        show=True, ylabel=False,
                        prepare_returns=False)
 
     if benchmark is not None:
-        _plots.returns(returns, benchmark, match_volatility=True,
+        _plots.returns(returns, benchmark, match_volatility=True, strategy_name=strategy_name, benchmark_name = benchmark_name,
                        grayscale=grayscale,
                        figsize=(figsize[0], figsize[0]*.5),
                        show=True, ylabel=False,
@@ -668,15 +668,15 @@ def plots(returns, benchmark=None, grayscale=False,
                             prepare_returns=False)
 
     _plots.rolling_volatility(
-        returns, benchmark, grayscale=grayscale,
+        returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name,
         figsize=(figsize[0], figsize[0]*.3), show=True, ylabel=False,
         period=win_half_year)
 
-    _plots.rolling_sharpe(returns, grayscale=grayscale,
+    _plots.rolling_sharpe(returns, grayscale=grayscale, strategy_name=strategy_name, 
                           figsize=(figsize[0], figsize[0]*.3),
                           show=True, ylabel=False, period=win_half_year)
 
-    _plots.rolling_sortino(returns, grayscale=grayscale,
+    _plots.rolling_sortino(returns, grayscale=grayscale, strategy_name=strategy_name,
                            figsize=(figsize[0], figsize[0]*.3),
                            show=True, ylabel=False, period=win_half_year)
 
