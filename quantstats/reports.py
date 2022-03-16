@@ -138,7 +138,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
 
     figfile = _utils._file_stream()
     _plots.log_returns(returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name,
-                       figsize=(8, 4), subtitle=False,
+                       custom_colors = custom_colors, figsize=(8, 4), subtitle=False,
                        savefig={'fname': figfile, 'format': figfmt},
                        show=False, ylabel=False, cumulative=compounded,
                        prepare_returns=False)
@@ -147,7 +147,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     if benchmark is not None:
         figfile = _utils._file_stream()
         _plots.returns(returns, benchmark, match_volatility=True, strategy_name=strategy_name, benchmark_name = benchmark_name,
-                       grayscale=grayscale, figsize=(8, 4), subtitle=False,
+                       custom_colors = custom_colors, grayscale=grayscale, figsize=(8, 4), subtitle=False,
                        savefig={'fname': figfile, 'format': figfmt},
                        show=False, ylabel=False, cumulative=compounded,
                        prepare_returns=False)
@@ -156,7 +156,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     
     figfile = _utils._file_stream()
     _plots.yearly_returns(returns, benchmark, grayscale=grayscale,
-                          figsize=(8, 4), subtitle=False,
+                          custom_colors = custom_colors, figsize=(8, 4), subtitle=False,
                           savefig={'fname': figfile, 'format': figfmt},
                           show=False, ylabel=False, compounded=compounded,
                           prepare_returns=False)

@@ -71,6 +71,7 @@ def _get_colors(grayscale, custom_colors = None):
 
 def plot_returns_bars(returns, benchmark=None,
                       returns_label="Strategy",
+                      custom_colors = None,
                       hline=None, hlw=None, hlcolor="red", hllabel="",
                       resample="A", title="Returns", match_volatility=False,
                       log_scale=False, figsize=(10, 6),
@@ -85,7 +86,7 @@ def plot_returns_bars(returns, benchmark=None,
         returns = (returns / returns.std()) * bmark_vol
 
     # ---------------
-    colors, _, _ = _get_colors(grayscale)
+    colors, _, _ = _get_colors(grayscale, custom_colors)
     df = _pd.DataFrame(index=returns.index, data={returns_label: returns})
     if isinstance(benchmark, _pd.Series):
         df['Benchmark'] = benchmark[benchmark.index.isin(returns.index)]
