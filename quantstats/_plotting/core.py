@@ -291,7 +291,7 @@ def plot_timeseries(returns, benchmark=None,
         ax.set_ylabel(ylabel, fontname=fontname,
                       fontweight='bold', fontsize=12, color="black")
     ax.yaxis.set_label_coords(-.1, .5)
-    ax.set(facecolor = "orange")
+    ax.set(facecolor = "0, 0, 0, 0")
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
