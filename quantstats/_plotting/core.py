@@ -162,6 +162,10 @@ def plot_returns_bars(returns, benchmark=None,
 
     ax.yaxis.set_major_formatter(_FuncFormatter(format_pct_axis))
 
+    fig.patch.set_facecolor('blue')
+    fig.patch.set_alpha(0.0)
+    ax.get_xaxis().set_visible(False)
+
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
     except Exception:
@@ -291,7 +295,8 @@ def plot_timeseries(returns, benchmark=None,
         ax.set_ylabel(ylabel, fontname=fontname,
                       fontweight='bold', fontsize=12, color="black")
     ax.yaxis.set_label_coords(-.1, .5)
-    ax.set_facecolor('none')
+    
+
     fig.patch.set_facecolor('blue')
     fig.patch.set_alpha(0.0)
     ax.get_xaxis().set_visible(False)
@@ -384,6 +389,10 @@ def plot_histogram(returns, resample="M", bins=20,
 
     ax.legend(fontsize=12)
 
+    fig.patch.set_facecolor('blue')
+    fig.patch.set_alpha(0.0)
+    ax.get_xaxis().set_visible(False)
+
     # fig.autofmt_xdate()
 
     try:
@@ -471,6 +480,9 @@ def plot_rolling_stats(returns, benchmark=None, title="",
     ax.yaxis.set_major_formatter(_FormatStrFormatter('%.2f'))
 
     ax.legend(fontsize=12)
+    fig.patch.set_facecolor('blue')
+    fig.patch.set_alpha(0.0)
+    ax.get_xaxis().set_visible(False)
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
@@ -553,6 +565,10 @@ def plot_rolling_beta(returns, benchmark,
         ax.yaxis.set_label_coords(-.1, .5)
 
     ax.legend(fontsize=12)
+    fig.patch.set_facecolor('blue')
+    fig.patch.set_alpha(0.0)
+    ax.get_xaxis().set_visible(False)
+
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
     except Exception:
@@ -641,6 +657,9 @@ def plot_longest_drawdowns(returns, periods=5, lw=1.5,
     #     lambda x, loc: "{:,}%".format(int(x*100))))
 
     fig.autofmt_xdate()
+    fig.patch.set_facecolor('blue')
+    fig.patch.set_alpha(0.0)
+    ax.get_xaxis().set_visible(False)
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
