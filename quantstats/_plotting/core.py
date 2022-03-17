@@ -18,6 +18,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from turtle import color
 import matplotlib.pyplot as _plt
 try:
     _plt.rcParams["font.family"] = "Arial"
@@ -198,7 +199,8 @@ def plot_timeseries(returns, benchmark=None,
                     subtitle=True, savefig=None, show=True):
 
     colors, ls, alpha = _get_colors(grayscale, custom_colors)
-
+    if custom_colors:
+        hlcolor = colors[5]
     returns.fillna(0, inplace=True)
     if isinstance(benchmark, _pd.Series):
         benchmark.fillna(0, inplace=True)
@@ -417,6 +419,8 @@ def plot_rolling_stats(returns, benchmark=None, title="",
 
     colors, _, _ = _get_colors(grayscale, custom_colors)
 
+    if custom_colors: 
+        hlcolor = colors[5]
     fig, ax = _plt.subplots(figsize=figsize)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
@@ -573,12 +577,15 @@ def plot_rolling_beta(returns, benchmark,
 
 
 def plot_longest_drawdowns(returns, periods=5, lw=1.5,
-                           fontname='Arial', grayscale=False,
+                           custom_colors = None, fontname='Arial', grayscale=False,
                            log_scale=False, figsize=(10, 6), ylabel=True,
                            subtitle=True, compounded=True,
                            savefig=None, show=True):
 
+
     colors = ['#348dc1', '#003366', 'red']
+    if custom_colors: 
+        colors = [custom_colors[1], custom_colors[2], custom_colors[5]]
     if grayscale:
         colors = ['#000000'] * 3
 

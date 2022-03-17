@@ -200,7 +200,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
 
     figfile = _utils._file_stream()
     _plots.rolling_sharpe(returns, grayscale=grayscale, strategy_name=strategy_name, 
-                          figsize=(8, 3), subtitle=False,
+                          custom_colors = custom_colors, figsize=(8, 3), subtitle=False,
                           savefig={'fname': figfile, 'format': figfmt},
                           show=False, ylabel=False, period=win_half_year,
                           periods_per_year=win_year)
@@ -208,7 +208,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
 
     figfile = _utils._file_stream()
     _plots.rolling_sortino(returns, grayscale=grayscale, strategy_name=strategy_name, 
-                           figsize=(8, 3), subtitle=False,
+                           custom_colors = custom_colors, figsize=(8, 3), subtitle=False,
                            savefig={'fname': figfile, 'format': figfmt},
                            show=False, ylabel=False, period=win_half_year,
                            periods_per_year=win_year)
@@ -216,7 +216,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
 
     figfile = _utils._file_stream()
     _plots.drawdowns_periods(returns, grayscale=grayscale,
-                             figsize=(8, 4), subtitle=False,
+                             custom_colors = custom_colors, figsize=(8, 4), subtitle=False,
                              savefig={'fname': figfile, 'format': figfmt},
                              show=False, ylabel=False, compounded=compounded,
                              prepare_returns=False)
@@ -224,7 +224,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
 
     figfile = _utils._file_stream()
     _plots.drawdown(returns, grayscale=grayscale,
-                    figsize=(8, 3), subtitle=False,
+                    custom_colors = custom_colors, figsize=(8, 3), subtitle=False,
                     savefig={'fname': figfile, 'format': figfmt},
                     show=False, ylabel=False)
     tpl = tpl.replace('{{dd_plot}}', _embed_figure(figfile, figfmt))
