@@ -292,6 +292,8 @@ def plot_timeseries(returns, benchmark=None,
                       fontweight='bold', fontsize=12, color="black")
     ax.yaxis.set_label_coords(-.1, .5)
     ax.set_facecolor('none')
+    fig.patch.set_facecolor('blue')
+    fig.patch.set_alpha(0.0)
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
