@@ -173,6 +173,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     figfile = _utils._file_stream()
     _plots.daily_returns(returns, grayscale=grayscale,
                          figsize=(8, 3), subtitle=False,
+                         custom_colors = custom_colors,
                          savefig={'fname': figfile, 'format': figfmt},
                          show=False, ylabel=False,
                          prepare_returns=False)
@@ -182,6 +183,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
         figfile = _utils._file_stream()
         _plots.rolling_beta(returns, benchmark, grayscale=grayscale,
                             figsize=(8, 3), subtitle=False,
+                            custom_colors = custom_colors,
                             window1=win_half_year, window2=win_year,
                             savefig={'fname': figfile, 'format': figfmt},
                             show=False, ylabel=False,

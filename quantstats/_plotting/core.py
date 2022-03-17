@@ -87,6 +87,8 @@ def plot_returns_bars(returns, benchmark=None,
 
     # ---------------
     colors, _, _ = _get_colors(grayscale, custom_colors)
+    if custom_colors:
+        hlcolor = custom_colors[5]
     df = _pd.DataFrame(index=returns.index, data={returns_label: returns})
     if isinstance(benchmark, _pd.Series):
         df['Benchmark'] = benchmark[benchmark.index.isin(returns.index)]
@@ -489,13 +491,16 @@ def plot_rolling_stats(returns, benchmark=None, title="",
 
 
 def plot_rolling_beta(returns, benchmark,
+                      custom_colors = None,
                       window1=126, window1_label="",
                       window2=None, window2_label="",
                       title="", hlcolor="red", figsize=(10, 6),
                       grayscale=False, fontname="Arial", lw=1.5,
                       ylabel=True, subtitle=True, savefig=None, show=True):
 
-    colors, _, _ = _get_colors(grayscale)
+    colors, _, _ = _get_colors(grayscale, custom_colors)
+    if custom_colors:
+        hlcolor = custom_colors[5]
 
     fig, ax = _plt.subplots(figsize=figsize)
     ax.spines['top'].set_visible(False)
@@ -517,7 +522,7 @@ def plot_rolling_beta(returns, benchmark,
 
     if window2:
         ax.plot(_stats.rolling_greeks(returns, benchmark, window2)['beta'],
-                lw=lw, label=window2_label, color="gray", alpha=0.8)
+                lw=lw, label=window2_label, color=colors[2], alpha=0.8)
     mmin = min([-100, int(beta.min()*100)])
     mmax = max([100, int(beta.max()*100)])
     step = 50 if (mmax-mmin) >= 200 else 100
