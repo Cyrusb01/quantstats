@@ -321,10 +321,14 @@ def plot_histogram(returns, resample="M", bins=20,
                    ylabel=True, subtitle=True, compounded=True,
                    savefig=None, show=True):
 
-    colors = ['pink', 'orange', 'green']
+    if custom_colors:
+        #Bar color: Strategy Color, second color doesn't do anything, third color is dotted line
+        colors = [custom_colors[1], custom_colors[2], custom_colors[5]]
+    else: 
+        colors = ["#348dc1", "#fedd78", "red"]
+
     if grayscale:
         colors = ['silver', 'gray', 'black']
-
     apply_fnc = _stats.comp if compounded else _np.sum
     returns = returns.fillna(0).resample(resample).apply(
         apply_fnc).resample(resample).last()

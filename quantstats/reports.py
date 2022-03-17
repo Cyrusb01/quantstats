@@ -165,7 +165,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     figfile = _utils._file_stream()
     _plots.histogram(returns, grayscale=grayscale,
                      figsize=(8, 4), subtitle=False,
-                     savefig={'fname': figfile, 'format': figfmt},
+                     custom_colors = custom_colors, savefig={'fname': figfile, 'format': figfmt},
                      show=False, ylabel=False, compounded=compounded,
                      prepare_returns=False)
     tpl = tpl.replace('{{monthly_dist}}', _embed_figure(figfile, figfmt))

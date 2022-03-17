@@ -432,7 +432,7 @@ def distribution(returns, fontname='Arial', grayscale=False, ylabel=True,
 
 
 def histogram(returns, resample='M', fontname='Arial',
-              grayscale=False, figsize=(10, 5), ylabel=True,
+              custom_colors = None, grayscale=False, figsize=(10, 5), ylabel=True,
               subtitle=True, compounded=True, savefig=None, show=True,
               prepare_returns=True):
 
@@ -453,6 +453,7 @@ def histogram(returns, resample='M', fontname='Arial',
     return _core.plot_histogram(returns,
                                 resample=resample,
                                 grayscale=grayscale,
+                                custom_colors= custom_colors,
                                 fontname=fontname,
                                 title="Distribution of %sReturns" % title,
                                 figsize=figsize,
