@@ -402,14 +402,14 @@ def plot_histogram(returns, resample="M", bins=20,
 
 
 def plot_rolling_stats(returns, benchmark=None, title="",
-                       returns_label="Strategy",
+                       custom_colors = None, returns_label="Strategy",
                        benchmark_label="Benchmark",
                        hline=None, hlw=None, hlcolor="red", hllabel="",
                        lw=1.5, figsize=(10, 6), ylabel="",
                        grayscale=False, fontname="Arial", subtitle=True,
                        savefig=None, show=True):
 
-    colors, _, _ = _get_colors(grayscale)
+    colors, _, _ = _get_colors(grayscale, custom_colors)
 
     fig, ax = _plt.subplots(figsize=figsize)
     ax.spines['top'].set_visible(False)

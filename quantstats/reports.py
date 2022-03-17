@@ -190,7 +190,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
 
     figfile = _utils._file_stream()
     _plots.rolling_volatility(returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name,
-                              figsize=(8, 3), subtitle=False,
+                              custom_colors = custom_colors, figsize=(8, 3), subtitle=False,
                               savefig={'fname': figfile, 'format': figfmt},
                               show=False, ylabel=False, period=win_half_year,
                               periods_per_year=win_year)

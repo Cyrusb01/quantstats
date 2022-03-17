@@ -535,7 +535,7 @@ def rolling_beta(returns, benchmark,
 
 
 def rolling_volatility(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "Benchmark",
-                       period=126, period_label="6-Months",
+                       custom_colors = None,period=126, period_label="6-Months",
                        periods_per_year=252,
                        lw=1.5, fontname='Arial', grayscale=False,
                        figsize=(10, 3), ylabel="Volatility",
@@ -551,6 +551,7 @@ def rolling_volatility(returns, benchmark=None, strategy_name = "Strategy", benc
     fig = _core.plot_rolling_stats(returns, benchmark,
                                    hline=returns.mean(),
                                    hlw=1.5,
+                                   custom_colors = custom_colors,
                                    ylabel=ylabel,
                                    returns_label= strategy_name,
                                    benchmark_label=benchmark_name,
