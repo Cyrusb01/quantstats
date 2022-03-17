@@ -55,7 +55,7 @@ def _match_dates(returns, benchmark):
 
 
 def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "Benchmark", logo = "", rf=0., grayscale=False,
-         custom_colors = None, title='Strategy Tearsheet', company = "Quantstats", output=None, compounded=True,
+         custom_colors = None, background_color = "white", title='Strategy Tearsheet', company = "Quantstats", output=None, compounded=True,
          periods_per_year=252, download_filename='quantstats-tearsheet.html',
          figfmt='svg', template_path=None, match_dates=False):
 
@@ -81,6 +81,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     tpl = tpl.replace('{{title}}', title)
     tpl = tpl.replace('{{v}}', company)
     tpl = tpl.replace('{{logo}}', logo)
+    tpl = tpl.replace('{{background_color}}', background_color)
 
     mtrx = metrics(returns=returns, benchmark=benchmark, strategy_name=strategy_name, benchmark_name=benchmark_name,
                    rf=rf, display=False, mode='full',
