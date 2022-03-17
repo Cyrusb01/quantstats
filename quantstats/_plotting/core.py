@@ -316,12 +316,12 @@ def plot_timeseries(returns, benchmark=None,
 
 
 def plot_histogram(returns, resample="M", bins=20,
-                   fontname='Arial', grayscale=False,
+                   custom_colors = None, fontname='Arial', grayscale=False,
                    title="Returns", kde=True, figsize=(10, 6),
                    ylabel=True, subtitle=True, compounded=True,
                    savefig=None, show=True):
 
-    colors = ['#348dc1', '#003366', 'red']
+    colors = ['pink', 'orange', 'green']
     if grayscale:
         colors = ['silver', 'gray', 'black']
 
