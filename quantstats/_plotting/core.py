@@ -71,7 +71,7 @@ def _get_colors(grayscale, custom_colors = None):
 
 
 def plot_returns_bars(returns, benchmark=None,
-                      returns_label="Strategy",
+                      returns_label="Strategy", benchmark_name = "Benchmark",
                       custom_colors = None,
                       hline=None, hlw=None, hlcolor="red", hllabel="",
                       resample="A", title="Returns", match_volatility=False,
@@ -92,8 +92,8 @@ def plot_returns_bars(returns, benchmark=None,
         hlcolor = custom_colors[5]
     df = _pd.DataFrame(index=returns.index, data={returns_label: returns})
     if isinstance(benchmark, _pd.Series):
-        df['Benchmark'] = benchmark[benchmark.index.isin(returns.index)]
-        df = df[['Benchmark', returns_label]]
+        df[benchmark_name] = benchmark[benchmark.index.isin(returns.index)]
+        df = df[[benchmark_name, returns_label]]
 
     df = df.dropna()
     if resample is not None:

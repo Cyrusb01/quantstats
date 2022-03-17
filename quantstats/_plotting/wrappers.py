@@ -368,7 +368,7 @@ def daily_returns(returns,
         return fig
 
 
-def yearly_returns(returns, benchmark=None,
+def yearly_returns(returns, benchmark=None, strategy_name="Strategy", benchmark_name = "Benchmark",
                    fontname='Arial', grayscale=False,
                    hlw=1.5, hlcolor="red", hllabel="",
                    match_volatility=False,
@@ -398,6 +398,8 @@ def yearly_returns(returns, benchmark=None,
                                   fontname=fontname,
                                   hline=returns.mean(),
                                   hlw=hlw,
+                                  returns_label = strategy_name,
+                                  benchmark_name = benchmark_name,
                                   hllabel=hllabel,
                                   hlcolor=hlcolor,
                                   custom_colors = custom_colors,
@@ -466,7 +468,7 @@ def histogram(returns, resample='M', fontname='Arial',
 
 
 def drawdown(returns, grayscale=False, figsize=(10, 5),
-             custom_colors = None, fontname='Arial', lw=1, log_scale=False,
+             custom_colors = None, strategy_name = "Strategy", fontname='Arial', lw=1, log_scale=False,
              match_volatility=False, compound=False, ylabel="Drawdown",
              resample=None, subtitle=True, savefig=None, show=True):
 
@@ -474,7 +476,7 @@ def drawdown(returns, grayscale=False, figsize=(10, 5),
 
     fig = _core.plot_timeseries(dd, title='Underwater Plot',
                                 hline=dd.mean(), hlw=2, hllabel="Average",
-                                returns_label="Drawdown",
+                                returns_label= strategy_name,
                                 custom_colors=custom_colors,
                                 compound=compound, match_volatility=match_volatility,
                                 log_scale=log_scale, resample=resample,

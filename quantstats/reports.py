@@ -155,7 +155,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
 
     
     figfile = _utils._file_stream()
-    _plots.yearly_returns(returns, benchmark, grayscale=grayscale,
+    _plots.yearly_returns(returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name,
                           custom_colors = custom_colors, figsize=(8, 4), subtitle=False,
                           savefig={'fname': figfile, 'format': figfmt},
                           show=False, ylabel=False, compounded=compounded,
@@ -223,7 +223,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     tpl = tpl.replace('{{dd_periods}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
-    _plots.drawdown(returns, grayscale=grayscale,
+    _plots.drawdown(returns, grayscale=grayscale, strategy_name= strategy_name,
                     custom_colors = custom_colors, figsize=(8, 3), subtitle=False,
                     savefig={'fname': figfile, 'format': figfmt},
                     show=False, ylabel=False)
