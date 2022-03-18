@@ -109,7 +109,7 @@ def plot_returns_bars(returns, benchmark=None,
 
     # use a more precise date string for the x axis locations in the toolbar
     fig.suptitle(title+"\n", y=.99, fontweight="bold", fontname=fontname,
-                 fontsize=14, color="black")
+                 fontsize=14, color="white")
 
     if subtitle:
         ax.set_title("\n%s - %s                   " % (
@@ -357,7 +357,7 @@ def plot_histogram(returns, resample="M", bins=20,
     ax.spines['left'].set_visible(False)
 
     fig.suptitle(title+"\n", y=.99, fontweight="bold", fontname=fontname,
-                 fontsize=14, color="black")
+                 fontsize=14, color="white")
 
     if subtitle:
         ax.set_title("\n%s - %s                   " % (
@@ -462,7 +462,7 @@ def plot_rolling_stats(returns, benchmark=None, title="",
     # use a more precise date string for the x axis locations in the toolbar
     # ax.fmt_xdata = _mdates.DateFormatter('%Y-%m-%d')\
     fig.suptitle(title+"\n", y=.99, fontweight="bold", fontname=fontname,
-                 fontsize=14, color="black")
+                 fontsize=14, color="white")
 
     if subtitle:
         ax.set_title("\n%s - %s                   " % (
@@ -537,7 +537,7 @@ def plot_rolling_beta(returns, benchmark,
     ax.spines['left'].set_visible(False)
 
     fig.suptitle(title+"\n", y=.99, fontweight="bold", fontname=fontname,
-                 fontsize=14, color="black")
+                 fontsize=14, color="white")
 
     if subtitle:
         ax.set_title("\n%s - %s                   " % (
@@ -577,6 +577,7 @@ def plot_rolling_beta(returns, benchmark,
     fig.patch.set_alpha(0.0)
     ax.patch.set_facecolor('blue')
     ax.patch.set_alpha(0.0)
+    ax.get_xaxis().set_visible(False)
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
@@ -738,7 +739,7 @@ def plot_distribution(returns, figsize=(10, 6),
 
     fig.suptitle("Return Quantiles\n", y=.99,
                  fontweight="bold", fontname=fontname,
-                 fontsize=14, color="black")
+                 fontsize=14, color="white")
 
     if subtitle:
         ax.set_title("\n%s - %s                   " % (

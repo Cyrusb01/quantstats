@@ -674,7 +674,7 @@ def monthly_heatmap(returns, annot_size=10, figsize=(10, 5),
     ax.set_facecolor('white')
 
     ax.set_title('      Monthly Returns (%)\n', fontsize=14, y=.995,
-                 fontname=fontname, fontweight='bold', color='black')
+                 fontname=fontname, fontweight='bold', color='white')
 
     # _sns.set(font_scale=.9)
     ax = _sns.heatmap(returns, ax=ax, annot=True, center=0,
