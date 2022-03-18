@@ -97,8 +97,9 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     tpl = tpl.replace('<tr><td></td><td></td></tr>',
                       '<tr><td colspan="2"><hr></td></tr>')
     tpl = tpl.replace('<thead>', '<thead style="color: black">')
-    tpl = tpl.replace('<thead>', '<thead style="color: black">')
-    tpl = tpl.replace('<thead>', '<thead style="color: black">')
+    
+    
+
     if benchmark is not None:
         yoy = _stats.compare(
             returns, benchmark, "A", compounded=compounded,
@@ -120,6 +121,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
         yoy.index.name = 'Year'
         tpl = tpl.replace('{{eoy_title}}', '<h3>EOY Returns</h3>')
         tpl = tpl.replace('{{eoy_table}}', _html_table(yoy))
+        tpl = tpl.replace('<thead>', '<thead style="color: black">')
 
     
     dd = _stats.to_drawdown_series(returns)
@@ -130,6 +132,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     dd_info = dd_info[['start', 'end', 'max drawdown', 'days']]
     dd_info.columns = ['Started', 'Recovered', 'Drawdown', 'Days']
     tpl = tpl.replace('{{dd_info}}', _html_table(dd_info, False))
+    tpl = tpl.replace('<thead>', '<thead style="color: black">')
 
     # plots
     figfile = _utils._file_stream()
