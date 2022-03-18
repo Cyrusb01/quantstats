@@ -72,7 +72,7 @@ def _get_colors(grayscale, custom_colors = None):
 
 def plot_returns_bars(returns, benchmark=None,
                       returns_label="Strategy", benchmark_name = "Benchmark",
-                      custom_colors = None,
+                      custom_colors = None, bg_graph = "white", alpha = 1,
                       hline=None, hlw=None, hlcolor="red", hllabel="",
                       resample="A", title="Returns", match_volatility=False,
                       log_scale=False, figsize=(10, 6),
@@ -162,11 +162,11 @@ def plot_returns_bars(returns, benchmark=None,
 
     ax.yaxis.set_major_formatter(_FuncFormatter(format_pct_axis))
 
-    fig.patch.set_facecolor('blue')
-    fig.patch.set_alpha(0.0)
-    ax.patch.set_facecolor('blue')
-    ax.patch.set_alpha(0.0)
-    ax.get_xaxis().set_visible(False)
+    fig.patch.set_facecolor(bg_graph)
+    fig.patch.set_alpha(alpha)
+    ax.patch.set_facecolor(bg_graph)
+    ax.patch.set_alpha(alpha)
+    ax.grid(False)
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
@@ -196,7 +196,7 @@ def plot_returns_bars(returns, benchmark=None,
 
 
 def plot_timeseries(returns, benchmark=None,
-                    title="Returns", compound=False, cumulative=True, custom_colors = None,
+                    title="Returns", compound=False, cumulative=True, custom_colors = None, bg_graph = "white", alpha = 1,
                     fill=False, returns_label="Strategy", benchmark_label = "Benchmark",
                     hline=None, hlw=None, hlcolor="red", hllabel="",
                     percent=True, match_volatility=False, log_scale=False,
@@ -299,13 +299,12 @@ def plot_timeseries(returns, benchmark=None,
     ax.yaxis.set_label_coords(-.1, .5)
     
     
-    fig.patch.set_facecolor('#191E2B')
-    # fig.patch.set_alpha(0.0)
-    ax.patch.set_facecolor('#191E2B')
-    # ax.patch.set_alpha(0.0)
+    fig.patch.set_facecolor(bg_graph)
+    fig.patch.set_alpha(alpha)
+    ax.patch.set_facecolor(bg_graph)
+    ax.patch.set_alpha(alpha)
     ax.grid(False)
-    # ax.get_xaxis().set_visible(False)
-    # ax.get_yaxis().set_visible(False)
+    
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
@@ -336,7 +335,7 @@ def plot_timeseries(returns, benchmark=None,
 
 def plot_histogram(returns, resample="M", bins=20,
                    custom_colors = None, fontname='Arial', grayscale=False,
-                   title="Returns", kde=True, figsize=(10, 6),
+                   title="Returns", kde=True, figsize=(10, 6), bg_graph = "white", alpha = 1,
                    ylabel=True, subtitle=True, compounded=True,
                    savefig=None, show=True):
 
@@ -395,11 +394,11 @@ def plot_histogram(returns, resample="M", bins=20,
 
     ax.legend(fontsize=12)
 
-    fig.patch.set_facecolor('blue')
-    fig.patch.set_alpha(0.0)
-    ax.patch.set_facecolor('blue')
-    ax.patch.set_alpha(0.0)
-    ax.get_xaxis().set_visible(False)
+    fig.patch.set_facecolor(bg_graph)
+    fig.patch.set_alpha(alpha)
+    ax.patch.set_facecolor(bg_graph)
+    ax.patch.set_alpha(alpha)
+    ax.grid(False)
 
     # fig.autofmt_xdate()
 
@@ -431,7 +430,7 @@ def plot_histogram(returns, resample="M", bins=20,
 
 
 def plot_rolling_stats(returns, benchmark=None, title="",
-                       custom_colors = None, returns_label="Strategy",
+                       custom_colors = None, bg_graph = "white", alpha = 1, returns_label="Strategy", 
                        benchmark_label="Benchmark",
                        hline=None, hlw=None, hlcolor="red", hllabel="",
                        lw=1.5, figsize=(10, 6), ylabel="",
@@ -488,11 +487,11 @@ def plot_rolling_stats(returns, benchmark=None, title="",
     ax.yaxis.set_major_formatter(_FormatStrFormatter('%.2f'))
 
     ax.legend(fontsize=12)
-    fig.patch.set_facecolor('blue')
-    fig.patch.set_alpha(0.0)
-    ax.patch.set_facecolor('blue')
-    ax.patch.set_alpha(0.0)
-    ax.get_xaxis().set_visible(False)
+    fig.patch.set_facecolor(bg_graph)
+    fig.patch.set_alpha(alpha)
+    ax.patch.set_facecolor(bg_graph)
+    ax.patch.set_alpha(alpha)
+    ax.grid(False)
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
@@ -521,7 +520,7 @@ def plot_rolling_stats(returns, benchmark=None, title="",
 
 
 def plot_rolling_beta(returns, benchmark,
-                      custom_colors = None,
+                      custom_colors = None, bg_graph = "white", alpha = 1,
                       window1=126, window1_label="",
                       window2=None, window2_label="",
                       title="", hlcolor="red", figsize=(10, 6),
@@ -575,11 +574,11 @@ def plot_rolling_beta(returns, benchmark,
         ax.yaxis.set_label_coords(-.1, .5)
 
     ax.legend(fontsize=12)
-    fig.patch.set_facecolor('blue')
-    fig.patch.set_alpha(0.0)
-    ax.patch.set_facecolor('blue')
-    ax.patch.set_alpha(0.0)
-    ax.get_xaxis().set_visible(False)
+    fig.patch.set_facecolor(bg_graph)
+    fig.patch.set_alpha(alpha)
+    ax.patch.set_facecolor(bg_graph)
+    ax.patch.set_alpha(alpha)
+    ax.grid(False)
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
@@ -609,7 +608,7 @@ def plot_rolling_beta(returns, benchmark,
 
 
 def plot_longest_drawdowns(returns, periods=5, lw=1.5,
-                           custom_colors = None, fontname='Arial', grayscale=False,
+                           custom_colors = None, bg_graph = "white", alpha = 1, fontname='Arial', grayscale=False,
                            log_scale=False, figsize=(10, 6), ylabel=True,
                            subtitle=True, compounded=True,
                            savefig=None, show=True):
@@ -669,11 +668,11 @@ def plot_longest_drawdowns(returns, periods=5, lw=1.5,
     #     lambda x, loc: "{:,}%".format(int(x*100))))
 
     fig.autofmt_xdate()
-    fig.patch.set_facecolor('blue')
-    fig.patch.set_alpha(0.0)
-    ax.patch.set_facecolor('blue')
-    ax.patch.set_alpha(0.0)
-    ax.get_xaxis().set_visible(False)
+    fig.patch.set_facecolor(bg_graph)
+    fig.patch.set_alpha(alpha)
+    ax.patch.set_facecolor(bg_graph)
+    ax.patch.set_alpha(alpha)
+    ax.grid(False)
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
@@ -702,7 +701,7 @@ def plot_longest_drawdowns(returns, periods=5, lw=1.5,
     return None
 
 
-def plot_distribution(returns, figsize=(10, 6),
+def plot_distribution(returns, figsize=(10, 6), bg_graph = "white", alpha = 1,
                       fontname='Arial', grayscale=False, ylabel=True,
                       subtitle=True, compounded=True,
                       savefig=None, show=True):
@@ -763,10 +762,11 @@ def plot_distribution(returns, figsize=(10, 6),
         ax.yaxis.set_label_coords(-.1, .5)
 
     fig.autofmt_xdate()
-    fig.patch.set_facecolor('blue')
-    fig.patch.set_alpha(0.0)
-    ax.patch.set_facecolor('blue')
-    ax.patch.set_alpha(0.0)
+    fig.patch.set_facecolor(bg_graph)
+    fig.patch.set_alpha(alpha)
+    ax.patch.set_facecolor(bg_graph)
+    ax.patch.set_alpha(alpha)
+    ax.grid(False)
 
     try:
         _plt.subplots_adjust(hspace=0)
