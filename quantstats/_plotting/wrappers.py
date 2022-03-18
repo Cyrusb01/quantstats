@@ -682,10 +682,7 @@ def monthly_heatmap(returns, annot_size=10, figsize=(10, 5),
     ax.spines['bottom'].set_visible(False)
     ax.spines['left'].set_visible(False)
 
-    fig.patch.set_facecolor(bg_graph)
-    fig.patch.set_alpha(alpha)
-    ax.patch.set_facecolor(bg_graph)
-    ax.patch.set_alpha(alpha)
+    
 
     ax.set_title('      Monthly Returns (%)\n', fontsize=14, y=.995,
                  fontname=fontname, fontweight='bold', color='white')
@@ -705,10 +702,10 @@ def monthly_heatmap(returns, annot_size=10, figsize=(10, 5),
         ax.yaxis.set_label_coords(-.1, .5)
 
     ax.tick_params(colors="#808080")
-    fig.patch.set_facecolor('blue')
-    fig.patch.set_alpha(0.0)
-    ax.patch.set_facecolor('blue')
-    ax.patch.set_alpha(0.0)
+    fig.patch.set_facecolor(bg_graph)
+    fig.patch.set_alpha(alpha)
+    ax.patch.set_facecolor(bg_graph)
+    ax.patch.set_alpha(alpha)
     _plt.xticks(rotation=0, fontsize=annot_size*1.2)
     _plt.yticks(rotation=0, fontsize=annot_size*1.2)
 
