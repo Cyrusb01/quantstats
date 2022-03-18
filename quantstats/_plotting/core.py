@@ -108,7 +108,7 @@ def plot_returns_bars(returns, benchmark=None,
     ax.spines['left'].set_visible(False)
 
     # use a more precise date string for the x axis locations in the toolbar
-    fig.suptitle(title+"\n", y=.99, fontweight="bold", fontname=fontname,
+    fig.suptitle(title+"\n", y=.95, fontweight="bold", fontname=fontname,
                  fontsize=14, color="white")
 
     if subtitle:
@@ -251,7 +251,7 @@ def plot_timeseries(returns, benchmark=None,
         ax.set_title("\n%s - %s                  " % (
             returns.index.date[:1][0].strftime('%e %b \'%y'),
             returns.index.date[-1:][0].strftime('%e %b \'%y')
-        ), fontsize=12, color='gray')
+        ), fontsize=12, color=colors[3])
 
     # fig.set_facecolor('white')
     # ax.set_facecolor('white')
@@ -357,7 +357,7 @@ def plot_histogram(returns, resample="M", bins=20,
     ax.spines['bottom'].set_visible(False)
     ax.spines['left'].set_visible(False)
 
-    fig.suptitle(title+"\n", y=.99, fontweight="bold", fontname=fontname,
+    fig.suptitle(title+"\n", y=.95, fontweight="bold", fontname=fontname,
                  fontsize=14, color="white")
 
     if subtitle:
@@ -462,7 +462,7 @@ def plot_rolling_stats(returns, benchmark=None, title="",
 
     # use a more precise date string for the x axis locations in the toolbar
     # ax.fmt_xdata = _mdates.DateFormatter('%Y-%m-%d')\
-    fig.suptitle(title+"\n", y=.99, fontweight="bold", fontname=fontname,
+    fig.suptitle(title+"\n", y=.95, fontweight="bold", fontname=fontname,
                  fontsize=14, color="white")
 
     if subtitle:
@@ -537,7 +537,7 @@ def plot_rolling_beta(returns, benchmark,
     ax.spines['bottom'].set_visible(False)
     ax.spines['left'].set_visible(False)
 
-    fig.suptitle(title+"\n", y=.99, fontweight="bold", fontname=fontname,
+    fig.suptitle(title+"\n", y=.95, fontweight="bold", fontname=fontname,
                  fontsize=14, color="white")
 
     if subtitle:
@@ -632,7 +632,7 @@ def plot_longest_drawdowns(returns, periods=5, lw=1.5,
     ax.spines['left'].set_visible(False)
 
     fig.suptitle("Worst %.0f Drawdown Periods\n" %
-                 periods, y=.99, fontweight="bold", fontname=fontname,
+                 periods, y=.95, fontweight="bold", fontname=fontname,
                  fontsize=14, color="white")
     if subtitle:
         ax.set_title("\n%s - %s                   " % (
@@ -738,7 +738,7 @@ def plot_distribution(returns, figsize=(10, 6), bg_graph = "white", alpha = 1,
     ax.spines['bottom'].set_visible(False)
     ax.spines['left'].set_visible(False)
 
-    fig.suptitle("Return Quantiles\n", y=.99,
+    fig.suptitle("Return Quantiles\n", y=.95,
                  fontweight="bold", fontname=fontname,
                  fontsize=14, color="white")
 
