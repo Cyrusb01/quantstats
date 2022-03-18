@@ -243,7 +243,7 @@ def plot_timeseries(returns, benchmark=None,
     ax.spines['left'].set_visible(False)
 
     fig.suptitle(title+"\n", y=.99, fontweight="bold", fontname=fontname,
-                 fontsize=14, color="black")
+                 fontsize=14, color="white")
 
     if subtitle:
         ax.set_title("\n%s - %s                  " % (
@@ -456,7 +456,7 @@ def plot_rolling_stats(returns, benchmark=None, title="",
     # use a more precise date string for the x axis locations in the toolbar
     # ax.fmt_xdata = _mdates.DateFormatter('%Y-%m-%d')\
     fig.suptitle(title+"\n", y=.99, fontweight="bold", fontname=fontname,
-                 fontsize=14, color="black")
+                 fontsize=14, color="white")
 
     if subtitle:
         ax.set_title("\n%s - %s                   " % (
@@ -529,7 +529,7 @@ def plot_rolling_beta(returns, benchmark,
     ax.spines['left'].set_visible(False)
 
     fig.suptitle(title+"\n", y=.99, fontweight="bold", fontname=fontname,
-                 fontsize=14, color="black")
+                 fontsize=14, color="white")
 
     if subtitle:
         ax.set_title("\n%s - %s                   " % (
@@ -561,7 +561,7 @@ def plot_rolling_beta(returns, benchmark,
 
     if ylabel:
         ax.set_ylabel("Beta", fontname=fontname,
-                      fontweight='bold', fontsize=12, color="black")
+                      fontweight='bold', fontsize=12, color="white")
         ax.yaxis.set_label_coords(-.1, .5)
 
     ax.legend(fontsize=12)
@@ -622,7 +622,7 @@ def plot_longest_drawdowns(returns, periods=5, lw=1.5,
 
     fig.suptitle("Worst %.0f Drawdown Periods\n" %
                  periods, y=.99, fontweight="bold", fontname=fontname,
-                 fontsize=14, color="black")
+                 fontsize=14, color="white")
     if subtitle:
         ax.set_title("\n%s - %s                   " % (
             returns.index.date[:1][0].strftime('%e %b \'%y'),
@@ -649,7 +649,7 @@ def plot_longest_drawdowns(returns, periods=5, lw=1.5,
     _plt.yscale("symlog" if log_scale else "linear")
     if ylabel:
         ax.set_ylabel("Cumulative Returns", fontname=fontname,
-                      fontweight='bold', fontsize=12, color="black")
+                      fontweight='bold', fontsize=12, color="white")
         ax.yaxis.set_label_coords(-.1, .5)
 
     ax.yaxis.set_major_formatter(_FuncFormatter(format_pct_axis))
