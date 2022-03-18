@@ -243,7 +243,7 @@ def plot_timeseries(returns, benchmark=None,
     ax.spines['left'].set_visible(False)
 
     fig.suptitle(title+"\n", y=.99, fontweight="bold", fontname=fontname,
-                 fontsize=14, color="white")
+                 fontsize=14, color="black")
 
     if subtitle:
         ax.set_title("\n%s - %s                  " % (
@@ -251,8 +251,8 @@ def plot_timeseries(returns, benchmark=None,
             returns.index.date[-1:][0].strftime('%e %b \'%y')
         ), fontsize=12, color='gray')
 
-    # fig.set_facecolor('white')
-    # ax.set_facecolor('white')
+    fig.set_facecolor('white')
+    ax.set_facecolor('white')
 
     if isinstance(benchmark, _pd.Series):
         ax.plot(benchmark, lw=lw, ls=ls, label= benchmark_label, color=colors[0])
@@ -456,7 +456,7 @@ def plot_rolling_stats(returns, benchmark=None, title="",
     # use a more precise date string for the x axis locations in the toolbar
     # ax.fmt_xdata = _mdates.DateFormatter('%Y-%m-%d')\
     fig.suptitle(title+"\n", y=.99, fontweight="bold", fontname=fontname,
-                 fontsize=14, color="white")
+                 fontsize=14, color="black")
 
     if subtitle:
         ax.set_title("\n%s - %s                   " % (
@@ -529,7 +529,7 @@ def plot_rolling_beta(returns, benchmark,
     ax.spines['left'].set_visible(False)
 
     fig.suptitle(title+"\n", y=.99, fontweight="bold", fontname=fontname,
-                 fontsize=14, color="white")
+                 fontsize=14, color="black")
 
     if subtitle:
         ax.set_title("\n%s - %s                   " % (
