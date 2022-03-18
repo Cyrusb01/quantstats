@@ -304,8 +304,8 @@ def plot_timeseries(returns, benchmark=None,
     ax.patch.set_facecolor(bg_graph)
     ax.patch.set_alpha(alpha)
     ax.grid(False)
-    ax.tick_params(axis='x', colors='red')    #setting up X-axis tick color to red
-    ax.tick_params(axis='y', colors='yellow')  #setting up Y-axis tick color to black
+    ax.tick_params(axis='x', colors=colors[3])   
+    ax.tick_params(axis='y', colors=colors[3]) 
     
 
     try:
@@ -402,6 +402,9 @@ def plot_histogram(returns, resample="M", bins=20,
     ax.patch.set_alpha(alpha)
     ax.grid(False)
 
+    ax.tick_params(axis='x', colors=colors[3])   
+    ax.tick_params(axis='y', colors=colors[3]) 
+
     # fig.autofmt_xdate()
 
     try:
@@ -495,6 +498,9 @@ def plot_rolling_stats(returns, benchmark=None, title="",
     ax.patch.set_alpha(alpha)
     ax.grid(False)
 
+    ax.tick_params(axis='x', colors=colors[3])   
+    ax.tick_params(axis='y', colors=colors[3]) 
+
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
     except Exception:
@@ -581,6 +587,9 @@ def plot_rolling_beta(returns, benchmark,
     ax.patch.set_facecolor(bg_graph)
     ax.patch.set_alpha(alpha)
     ax.grid(False)
+
+    ax.tick_params(axis='x', colors=colors[3])   
+    ax.tick_params(axis='y', colors=colors[3]) 
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
@@ -675,6 +684,8 @@ def plot_longest_drawdowns(returns, periods=5, lw=1.5,
     ax.patch.set_facecolor(bg_graph)
     ax.patch.set_alpha(alpha)
     ax.grid(False)
+    ax.tick_params(axis='x', colors=colors[3])   
+    ax.tick_params(axis='y', colors=colors[3])
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
@@ -769,6 +780,8 @@ def plot_distribution(returns, figsize=(10, 6), bg_graph = "white", alpha = 1,
     ax.patch.set_facecolor(bg_graph)
     ax.patch.set_alpha(alpha)
     ax.grid(False)
+    ax.tick_params(axis='x', colors=colors[3])   
+    ax.tick_params(axis='y', colors=colors[3])
 
     try:
         _plt.subplots_adjust(hspace=0)
