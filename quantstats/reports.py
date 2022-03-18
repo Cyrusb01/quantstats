@@ -237,14 +237,14 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     tpl = tpl.replace('{{dd_plot}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
-    _plots.monthly_heatmap(returns, grayscale=grayscale,
+    _plots.monthly_heatmap(returns, grayscale=grayscale, bg_graph=bg_graph, alpha=alpha,
                            figsize=(8, 4), cbar=False,
                            savefig={'fname': figfile, 'format': figfmt},
                            show=False, ylabel=False, compounded=compounded)
     tpl = tpl.replace('{{monthly_heatmap}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
-    _plots.distribution(returns, grayscale=grayscale,
+    _plots.distribution(returns, grayscale=grayscale, bg_graph=bg_graph, alpha=alpha,
                         figsize=(8, 4), subtitle=False,
                         savefig={'fname': figfile, 'format': figfmt},
                         show=False, ylabel=False, compounded=compounded,

@@ -420,7 +420,7 @@ def yearly_returns(returns, benchmark=None, strategy_name="Strategy", benchmark_
         return fig
 
 
-def distribution(returns, fontname='Arial', grayscale=False, ylabel=True,
+def distribution(returns, fontname='Arial', grayscale=False, ylabel=True, 
                  figsize=(10, 6), subtitle=True, compounded=True, bg_graph = "white", alpha = 1,
                  savefig=None, show=True,
                  prepare_returns=True):
@@ -430,6 +430,7 @@ def distribution(returns, fontname='Arial', grayscale=False, ylabel=True,
     fig = _core.plot_distribution(returns,
                                   fontname=fontname,
                                   grayscale=grayscale,
+                                  bg_graph=bg_graph, alpha=alpha,
                                   figsize=figsize,
                                   ylabel=ylabel,
                                   subtitle=subtitle,
@@ -653,7 +654,7 @@ def rolling_sortino(returns, benchmark=None, strategy_name = "Strategy", rf=0.,
 
 
 def monthly_heatmap(returns, annot_size=10, figsize=(10, 5),
-                    cbar=True, square=False,
+                    cbar=True, square=False, bg_graph = "white", alpha = 1,
                     compounded=True, eoy=False,
                     grayscale=False, fontname='Arial',
                     ylabel=True, savefig=None, show=True):
@@ -681,8 +682,10 @@ def monthly_heatmap(returns, annot_size=10, figsize=(10, 5),
     ax.spines['bottom'].set_visible(False)
     ax.spines['left'].set_visible(False)
 
-    fig.set_facecolor('white')
-    ax.set_facecolor('white')
+    fig.patch.set_facecolor(bg_graph)
+    fig.patch.set_alpha(alpha)
+    ax.patch.set_facecolor(bg_graph)
+    ax.patch.set_alpha(alpha)
 
     ax.set_title('      Monthly Returns (%)\n', fontsize=14, y=.995,
                  fontname=fontname, fontweight='bold', color='white')
