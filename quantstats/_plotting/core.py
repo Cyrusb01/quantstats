@@ -299,10 +299,10 @@ def plot_timeseries(returns, benchmark=None,
     ax.yaxis.set_label_coords(-.1, .5)
     
     
-    fig.patch.set_facecolor('blue')
-    fig.patch.set_alpha(0.0)
-    ax.patch.set_facecolor('blue')
-    ax.patch.set_alpha(0.0)
+    fig.patch.set_facecolor('#191E2B')
+    # fig.patch.set_alpha(0.0)
+    ax.patch.set_facecolor('#191E2B')
+    # ax.patch.set_alpha(0.0)
     ax.get_xaxis().set_visible(False)
 
     try:
