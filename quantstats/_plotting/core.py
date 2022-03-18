@@ -303,8 +303,9 @@ def plot_timeseries(returns, benchmark=None,
     # fig.patch.set_alpha(0.0)
     ax.patch.set_facecolor('#191E2B')
     # ax.patch.set_alpha(0.0)
-    ax.get_xaxis().set_visible(False)
-    ax.get_yaxis().set_visible(False)
+    ax.grid(False)
+    # ax.get_xaxis().set_visible(False)
+    # ax.get_yaxis().set_visible(False)
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
