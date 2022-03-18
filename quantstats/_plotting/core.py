@@ -251,8 +251,8 @@ def plot_timeseries(returns, benchmark=None,
             returns.index.date[-1:][0].strftime('%e %b \'%y')
         ), fontsize=12, color='gray')
 
-    fig.set_facecolor('white')
-    ax.set_facecolor('white')
+    # fig.set_facecolor('white')
+    # ax.set_facecolor('white')
 
     if isinstance(benchmark, _pd.Series):
         ax.plot(benchmark, lw=lw, ls=ls, label= benchmark_label, color=colors[0])
