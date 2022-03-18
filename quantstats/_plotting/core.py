@@ -304,6 +304,8 @@ def plot_timeseries(returns, benchmark=None,
     ax.patch.set_facecolor(bg_graph)
     ax.patch.set_alpha(alpha)
     ax.grid(False)
+    ax.tick_params(axis='x', colors='red')    #setting up X-axis tick color to red
+    ax.tick_params(axis='y', colors='yellow')  #setting up Y-axis tick color to black
     
 
     try:
