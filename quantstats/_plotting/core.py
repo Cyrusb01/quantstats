@@ -402,8 +402,8 @@ def plot_histogram(returns, resample="M", bins=20,
     ax.patch.set_alpha(alpha)
     ax.grid(False)
 
-    ax.tick_params(axis='x', colors=colors[3])   
-    ax.tick_params(axis='y', colors=colors[3]) 
+    # ax.tick_params(axis='x', colors=colors[3])   
+    # ax.tick_params(axis='y', colors=colors[3]) 
 
     # fig.autofmt_xdate()
 
