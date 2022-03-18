@@ -251,8 +251,8 @@ def plot_timeseries(returns, benchmark=None,
             returns.index.date[-1:][0].strftime('%e %b \'%y')
         ), fontsize=12, color='gray')
 
-    fig.set_facecolor('white')
-    ax.set_facecolor('white')
+    # fig.set_facecolor('white')
+    # ax.set_facecolor('white')
 
     if isinstance(benchmark, _pd.Series):
         ax.plot(benchmark, lw=lw, ls=ls, label= benchmark_label, color=colors[0])
@@ -296,9 +296,11 @@ def plot_timeseries(returns, benchmark=None,
                       fontweight='bold', fontsize=12, color="black")
     ax.yaxis.set_label_coords(-.1, .5)
     
-
+    
     fig.patch.set_facecolor('blue')
     fig.patch.set_alpha(0.0)
+    ax.patch.set_facecolor('blue')
+    ax.patch.set_alpha(0.0)
     ax.get_xaxis().set_visible(False)
 
     try:
