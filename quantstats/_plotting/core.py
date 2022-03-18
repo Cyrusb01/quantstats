@@ -164,6 +164,8 @@ def plot_returns_bars(returns, benchmark=None,
 
     fig.patch.set_facecolor('blue')
     fig.patch.set_alpha(0.0)
+    ax.patch.set_facecolor('blue')
+    ax.patch.set_alpha(0.0)
     ax.get_xaxis().set_visible(False)
 
     try:
