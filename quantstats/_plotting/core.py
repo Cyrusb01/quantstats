@@ -484,6 +484,8 @@ def plot_rolling_stats(returns, benchmark=None, title="",
     ax.legend(fontsize=12)
     fig.patch.set_facecolor('blue')
     fig.patch.set_alpha(0.0)
+    ax.patch.set_facecolor('blue')
+    ax.patch.set_alpha(0.0)
     ax.get_xaxis().set_visible(False)
 
     try:
@@ -569,7 +571,8 @@ def plot_rolling_beta(returns, benchmark,
     ax.legend(fontsize=12)
     fig.patch.set_facecolor('blue')
     fig.patch.set_alpha(0.0)
-    ax.get_xaxis().set_visible(False)
+    ax.patch.set_facecolor('blue')
+    ax.patch.set_alpha(0.0)
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
@@ -661,6 +664,8 @@ def plot_longest_drawdowns(returns, periods=5, lw=1.5,
     fig.autofmt_xdate()
     fig.patch.set_facecolor('blue')
     fig.patch.set_alpha(0.0)
+    ax.patch.set_facecolor('blue')
+    ax.patch.set_alpha(0.0)
     ax.get_xaxis().set_visible(False)
 
     try:
