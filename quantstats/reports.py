@@ -96,7 +96,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
                       '<tr><td colspan="3"><hr></td></tr>')
     tpl = tpl.replace('<tr><td></td><td></td></tr>',
                       '<tr><td colspan="2"><hr></td></tr>')
-
+    tpl = tpl.replace('<thead>', '<thead style="color: black">')
     if benchmark is not None:
         yoy = _stats.compare(
             returns, benchmark, "A", compounded=compounded,
@@ -758,6 +758,7 @@ def _html_table(obj, showindex="default"):
     obj = _regex.sub(' +</td>', '</td>', obj)
     obj = _regex.sub('<th> +', '<th>', obj)
     obj = _regex.sub(' +</th>', '</th>', obj)
+
     return obj
 
 
