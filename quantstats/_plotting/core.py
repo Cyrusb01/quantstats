@@ -393,6 +393,8 @@ def plot_histogram(returns, resample="M", bins=20,
 
     fig.patch.set_facecolor('blue')
     fig.patch.set_alpha(0.0)
+    ax.patch.set_facecolor('blue')
+    ax.patch.set_alpha(0.0)
     ax.get_xaxis().set_visible(False)
 
     # fig.autofmt_xdate()
@@ -756,6 +758,10 @@ def plot_distribution(returns, figsize=(10, 6),
         ax.yaxis.set_label_coords(-.1, .5)
 
     fig.autofmt_xdate()
+    fig.patch.set_facecolor('blue')
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_facecolor('blue')
+    ax.patch.set_alpha(0.0)
 
     try:
         _plt.subplots_adjust(hspace=0)

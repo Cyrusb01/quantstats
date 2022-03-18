@@ -691,6 +691,10 @@ def monthly_heatmap(returns, annot_size=10, figsize=(10, 5),
         ax.yaxis.set_label_coords(-.1, .5)
 
     ax.tick_params(colors="#808080")
+    fig.patch.set_facecolor('blue')
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_facecolor('blue')
+    ax.patch.set_alpha(0.0)
     _plt.xticks(rotation=0, fontsize=annot_size*1.2)
     _plt.yticks(rotation=0, fontsize=annot_size*1.2)
 
