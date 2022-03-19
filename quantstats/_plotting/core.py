@@ -684,8 +684,8 @@ def plot_longest_drawdowns(returns, periods=5, lw=1.5,
     ax.patch.set_facecolor(bg_graph)
     ax.patch.set_alpha(alpha)
     ax.grid(False)
-    ax.tick_params(axis='x', colors=colors[3])   
-    ax.tick_params(axis='y', colors=colors[3])
+    # ax.tick_params(axis='x', colors=colors[3])   
+    # ax.tick_params(axis='y', colors=colors[3])
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
