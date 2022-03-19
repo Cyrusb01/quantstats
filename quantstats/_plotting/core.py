@@ -167,6 +167,8 @@ def plot_returns_bars(returns, benchmark=None,
     ax.patch.set_facecolor(bg_graph)
     ax.patch.set_alpha(alpha)
     ax.grid(False)
+    ax.tick_params(axis='x', colors=colors[3])   
+    ax.tick_params(axis='y', colors=colors[3]) 
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
@@ -342,8 +344,8 @@ def plot_histogram(returns, resample="M", bins=20,
                    savefig=None, show=True):
 
     if custom_colors:
-        #Bar color: Strategy Color, second color doesn't do anything, third color is dotted line
-        colors = [custom_colors[1], custom_colors[2], custom_colors[5]]
+        #Bar color: Strategy Color, second color is axis labels, third color is dotted line
+        colors = [custom_colors[1], custom_colors[3], custom_colors[5]]
     else: 
         colors = ["#348dc1", "#fedd78", "red"]
 
@@ -402,8 +404,8 @@ def plot_histogram(returns, resample="M", bins=20,
     ax.patch.set_alpha(alpha)
     ax.grid(False)
 
-    # ax.tick_params(axis='x', colors=colors[3])   
-    # ax.tick_params(axis='y', colors=colors[3]) 
+    ax.tick_params(axis='x', colors=colors[1])   
+    ax.tick_params(axis='y', colors=colors[1]) 
 
     # fig.autofmt_xdate()
 
