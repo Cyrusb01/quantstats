@@ -629,7 +629,7 @@ def plot_longest_drawdowns(returns, periods=5, lw=1.5,
 
     colors = ['#348dc1', '#003366', 'red']
     if custom_colors: 
-        colors = [custom_colors[1], custom_colors[2], custom_colors[5]]
+        colors = [custom_colors[1], custom_colors[3], custom_colors[5]]
     if grayscale:
         colors = ['#000000'] * 3
 
@@ -686,8 +686,8 @@ def plot_longest_drawdowns(returns, periods=5, lw=1.5,
     ax.patch.set_facecolor(bg_graph)
     ax.patch.set_alpha(alpha)
     ax.grid(False)
-    # ax.tick_params(axis='x', colors=colors[3])   
-    # ax.tick_params(axis='y', colors=colors[3])
+    ax.tick_params(axis='x', colors=colors[1])   
+    ax.tick_params(axis='y', colors=colors[1])
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
@@ -782,8 +782,8 @@ def plot_distribution(returns, figsize=(10, 6), bg_graph = "white", alpha = 1,
     ax.patch.set_facecolor(bg_graph)
     ax.patch.set_alpha(alpha)
     ax.grid(False)
-    ax.tick_params(axis='x', colors=colors[3])   
-    ax.tick_params(axis='y', colors=colors[3])
+    ax.tick_params(axis='x', colors="white")   
+    ax.tick_params(axis='y', colors="white")
 
     try:
         _plt.subplots_adjust(hspace=0)

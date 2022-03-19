@@ -708,6 +708,8 @@ def monthly_heatmap(returns, annot_size=10, figsize=(10, 5),
     ax.patch.set_alpha(alpha)
     _plt.xticks(rotation=0, fontsize=annot_size*1.2)
     _plt.yticks(rotation=0, fontsize=annot_size*1.2)
+    ax.tick_params(axis='x', colors="white")   
+    ax.tick_params(axis='y', colors="white")
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
