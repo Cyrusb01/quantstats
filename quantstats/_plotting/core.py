@@ -258,7 +258,7 @@ def plot_timeseries(returns, benchmark=None,
     ax.spines['bottom'].set_visible(False)
     ax.spines['left'].set_visible(False)
 
-    fig.suptitle(title+"\n", y=.95, fontweight="bold", fontname=fontname,
+    fig.suptitle(title+"\n", y=.95, fontweight="bold", 
                  fontsize=14, color="white")
 
     if subtitle:
