@@ -215,7 +215,7 @@ def plot_timeseries(returns, benchmark=None,
         font_manager.fontManager.addfont(font_file)
 
     # set font
-    _plt.rcParams['font.family'] = 'BeVietnamPro'
+    _plt.rcParams['font.family'] = 'BeVietnamPro-SemiBold'
     fontname = 'BeVietnamPro-SemiBold'
 
     colors, ls, alpha = _get_colors(grayscale, custom_colors)
