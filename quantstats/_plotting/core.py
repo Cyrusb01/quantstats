@@ -215,8 +215,8 @@ def plot_timeseries(returns, benchmark=None,
         font_manager.fontManager.addfont(font_file)
 
     # set font BeVietnamPro-SemiBold.ttf
-    _plt.rcParams['font.family'] = 'BeVietnamPro-SemiBold.ttf'
-    # fontname = 'BeVietnamPro SemiBold'
+    _plt.rcParams['font.family'] = 'Be Vietnam Pro'
+    fontname = 'Be Vietnam Pro'
 
     colors, ls, alpha = _get_colors(grayscale, custom_colors)
     if custom_colors:
@@ -258,7 +258,7 @@ def plot_timeseries(returns, benchmark=None,
     ax.spines['bottom'].set_visible(False)
     ax.spines['left'].set_visible(False)
 
-    fig.suptitle(title+"\n", y=.95, fontweight="bold", 
+    fig.suptitle(title+"\n", y=.95, fontweight="bold", fontname=fontname,
                  fontsize=14, color="white")
 
     if subtitle:
