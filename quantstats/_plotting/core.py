@@ -207,15 +207,15 @@ def plot_timeseries(returns, benchmark=None,
                     subtitle=True, savefig=None, show=True):
     from matplotlib import font_manager
 
-    font_dirs = ['/Be_Vietnam_Pro']
+    font_dirs = ['Be_Vietnam_Pro/']
     font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
-
+    
     for font_file in font_files:
         print(font_file)
         font_manager.fontManager.addfont(font_file)
 
     # set font
-    _plt.rcParams['font.family'] = 'BeVietnamPro-SemiBold'
+    _plt.rcParams['font.family'] = 'BeVietnamPro'
     fontname = 'BeVietnamPro-SemiBold'
 
     colors, ls, alpha = _get_colors(grayscale, custom_colors)
