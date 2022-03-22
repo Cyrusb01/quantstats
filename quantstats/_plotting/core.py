@@ -20,6 +20,7 @@
 
 from turtle import color
 import matplotlib.pyplot as _plt
+from matplotlib import font_manager
 try:
     _plt.rcParams["font.family"] = "Arial"
 except Exception:
@@ -76,7 +77,7 @@ def plot_returns_bars(returns, benchmark=None,
                       hline=None, hlw=None, hlcolor="red", hllabel="",
                       resample="A", title="Returns", match_volatility=False,
                       log_scale=False, figsize=(10, 6),
-                      grayscale=False, fontname='Arial', ylabel=True,
+                      grayscale=False, fontname='Arial', font_path = None, ylabel=True,
                       subtitle=True, savefig=None, show=True):
 
     if match_volatility and benchmark is None:
@@ -86,6 +87,15 @@ def plot_returns_bars(returns, benchmark=None,
         bmark_vol = benchmark.loc[returns.index].std()
         returns = (returns / returns.std()) * bmark_vol
 
+    if font_path:
+        font_dirs = [font_path]
+        font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
+        
+        for font_file in font_files:
+            font_manager.fontManager.addfont(font_file)
+
+        # set font BeVietnamPro-SemiBold.ttf
+        _plt.rcParams['font.family'] = fontname
     # ---------------
     colors, _, _ = _get_colors(grayscale, custom_colors)
     if custom_colors:
@@ -203,20 +213,19 @@ def plot_timeseries(returns, benchmark=None,
                     hline=None, hlw=None, hlcolor="red", hllabel="",
                     percent=True, match_volatility=False, log_scale=False,
                     resample=None, lw=1.5, figsize=(10, 6), ylabel="",
-                    grayscale=False, fontname="Arial",
+                    grayscale=False, fontname="Arial", font_path = None,
                     subtitle=True, savefig=None, show=True):
-    from matplotlib import font_manager
-
-    font_dirs = ['Be_Vietnam_Pro/']
-    font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
     
-    for font_file in font_files:
-        print(font_file)
-        font_manager.fontManager.addfont(font_file)
+    if font_path:
+        font_dirs = [font_path]
+        font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
+        
+        for font_file in font_files:
+            font_manager.fontManager.addfont(font_file)
 
-    # set font BeVietnamPro-SemiBold.ttf
-    _plt.rcParams['font.family'] = 'Be Vietnam Pro'
-    fontname = 'Be Vietnam Pro'
+        # set font BeVietnamPro-SemiBold.ttf
+        _plt.rcParams['font.family'] = fontname
+    
 
     colors, ls, alpha = _get_colors(grayscale, custom_colors)
     if custom_colors:
@@ -350,7 +359,7 @@ def plot_timeseries(returns, benchmark=None,
 
 
 def plot_histogram(returns, resample="M", bins=20,
-                   custom_colors = None, fontname='Arial', grayscale=False,
+                   custom_colors = None, fontname='Arial', font_path = None, grayscale=False,
                    title="Returns", kde=True, figsize=(10, 6), bg_graph = "white", alpha = 1,
                    ylabel=True, subtitle=True, compounded=True,
                    savefig=None, show=True):
@@ -372,7 +381,15 @@ def plot_histogram(returns, resample="M", bins=20,
     ax.spines['right'].set_visible(False)
     ax.spines['bottom'].set_visible(False)
     ax.spines['left'].set_visible(False)
+    if font_path:
+        font_dirs = [font_path]
+        font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
+        
+        for font_file in font_files:
+            font_manager.fontManager.addfont(font_file)
 
+        # set font BeVietnamPro-SemiBold.ttf
+        _plt.rcParams['font.family'] = fontname
     fig.suptitle(title+"\n", y=.95, fontweight="bold", fontname=fontname,
                  fontsize=14, color="white")
 
@@ -453,11 +470,19 @@ def plot_rolling_stats(returns, benchmark=None, title="",
                        benchmark_label="Benchmark",
                        hline=None, hlw=None, hlcolor="red", hllabel="",
                        lw=1.5, figsize=(10, 6), ylabel="",
-                       grayscale=False, fontname="Arial", subtitle=True,
+                       grayscale=False, fontname="Arial", font_path = None, subtitle=True,
                        savefig=None, show=True):
 
     colors, _, _ = _get_colors(grayscale, custom_colors)
+    if font_path:
+        font_dirs = [font_path]
+        font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
+        
+        for font_file in font_files:
+            font_manager.fontManager.addfont(font_file)
 
+        # set font BeVietnamPro-SemiBold.ttf
+        _plt.rcParams['font.family'] = fontname
     if custom_colors: 
         hlcolor = colors[5]
     fig, ax = _plt.subplots(figsize=figsize)
@@ -546,13 +571,21 @@ def plot_rolling_beta(returns, benchmark,
                       window1=126, window1_label="",
                       window2=None, window2_label="",
                       title="", hlcolor="red", figsize=(10, 6),
-                      grayscale=False, fontname="Arial", lw=1.5,
+                      grayscale=False, fontname="Arial", font_path = None, lw=1.5,
                       ylabel=True, subtitle=True, savefig=None, show=True):
 
     colors, _, _ = _get_colors(grayscale, custom_colors)
     if custom_colors:
         hlcolor = custom_colors[5]
+    if font_path:
+        font_dirs = [font_path]
+        font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
+        
+        for font_file in font_files:
+            font_manager.fontManager.addfont(font_file)
 
+        # set font BeVietnamPro-SemiBold.ttf
+        _plt.rcParams['font.family'] = fontname
     fig, ax = _plt.subplots(figsize=figsize)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
@@ -633,7 +666,7 @@ def plot_rolling_beta(returns, benchmark,
 
 
 def plot_longest_drawdowns(returns, periods=5, lw=1.5,
-                           custom_colors = None, bg_graph = "white", alpha = 1, fontname='Arial', grayscale=False,
+                           custom_colors = None, bg_graph = "white", alpha = 1, fontname='Arial', font_path = None, grayscale=False,
                            log_scale=False, figsize=(10, 6), ylabel=True,
                            subtitle=True, compounded=True,
                            savefig=None, show=True):
@@ -644,7 +677,15 @@ def plot_longest_drawdowns(returns, periods=5, lw=1.5,
         colors = [custom_colors[1], custom_colors[3], custom_colors[5]]
     if grayscale:
         colors = ['#000000'] * 3
+    if font_path:
+        font_dirs = [font_path]
+        font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
+        
+        for font_file in font_files:
+            font_manager.fontManager.addfont(font_file)
 
+        # set font BeVietnamPro-SemiBold.ttf
+        _plt.rcParams['font.family'] = fontname
     dd = _stats.to_drawdown_series(returns.fillna(0))
     dddf = _stats.drawdown_details(dd)
     longest_dd = dddf.sort_values(
@@ -729,7 +770,7 @@ def plot_longest_drawdowns(returns, periods=5, lw=1.5,
 
 
 def plot_distribution(returns, figsize=(10, 6), bg_graph = "white", alpha = 1,
-                      fontname='Arial', grayscale=False, ylabel=True,
+                      fontname='Arial', font_path = None, grayscale=False, ylabel=True,
                       subtitle=True, compounded=True,
                       savefig=None, show=True):
 
@@ -737,7 +778,15 @@ def plot_distribution(returns, figsize=(10, 6), bg_graph = "white", alpha = 1,
     if grayscale:
         colors = ['#f9f9f9', '#dddddd', '#bbbbbb', '#999999', '#808080']
     # colors, ls, alpha = _get_colors(grayscale)
+    if font_path:
+        font_dirs = [font_path]
+        font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
+        
+        for font_file in font_files:
+            font_manager.fontManager.addfont(font_file)
 
+        # set font BeVietnamPro-SemiBold.ttf
+        _plt.rcParams['font.family'] = fontname
     port = _pd.DataFrame(returns.fillna(0))
     port.columns = ['Daily']
 

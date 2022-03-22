@@ -55,7 +55,7 @@ def _match_dates(returns, benchmark):
 
 
 def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "Benchmark", logo = "", rf=0., grayscale=False, stylesheet = "",
-         custom_colors = None, bg_graph = "white", alpha = 1, background_color = "white", title='Strategy Tearsheet', company = "Quantstats", output=None, compounded=True,
+         custom_colors = None, bg_graph = "white", alpha = 1,  title='Strategy Tearsheet', company = "Quantstats", font_path =None, fontname = "Arial", output=None, compounded=True,
          periods_per_year=252, download_filename='quantstats-tearsheet.html',
          figfmt='svg', template_path=None, match_dates=False):
 
@@ -136,7 +136,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
 
     # plots
     figfile = _utils._file_stream()
-    _plots.returns(returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name,
+    _plots.returns(returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name, fontname=fontname, font_path = font_path,
                    custom_colors = custom_colors, bg_graph=bg_graph, alpha=alpha, figsize=(8, 5), subtitle=False,
                    savefig={'fname': figfile, 'format': figfmt},
                    show=False, ylabel=False, cumulative=compounded,
@@ -144,7 +144,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     tpl = tpl.replace('{{returns}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
-    _plots.log_returns(returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name,
+    _plots.log_returns(returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name, fontname=fontname, font_path = font_path,
                        custom_colors = custom_colors, bg_graph=bg_graph, alpha=alpha, figsize=(8, 4), subtitle=False,
                        savefig={'fname': figfile, 'format': figfmt},
                        show=False, ylabel=False, cumulative=compounded,
@@ -153,7 +153,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
 
     if benchmark is not None:
         figfile = _utils._file_stream()
-        _plots.returns(returns, benchmark, match_volatility=True, strategy_name=strategy_name, benchmark_name = benchmark_name,
+        _plots.returns(returns, benchmark, match_volatility=True, strategy_name=strategy_name, benchmark_name = benchmark_name, fontname=fontname, font_path = font_path,
                        custom_colors = custom_colors, bg_graph=bg_graph, alpha=alpha, grayscale=grayscale, figsize=(8, 4), subtitle=False,
                        savefig={'fname': figfile, 'format': figfmt},
                        show=False, ylabel=False, cumulative=compounded,
@@ -162,7 +162,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
 
     
     figfile = _utils._file_stream()
-    _plots.yearly_returns(returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name,
+    _plots.yearly_returns(returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name, fontname=fontname, font_path = font_path,
                           custom_colors = custom_colors, bg_graph=bg_graph, alpha=alpha, figsize=(8, 4), subtitle=False,
                           savefig={'fname': figfile, 'format': figfmt},
                           show=False, ylabel=False, compounded=compounded,
@@ -172,14 +172,14 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     figfile = _utils._file_stream()
     _plots.histogram(returns, grayscale=grayscale,
                      figsize=(8, 4), subtitle=False,
-                     custom_colors = custom_colors, bg_graph=bg_graph, alpha=alpha, savefig={'fname': figfile, 'format': figfmt},
+                     custom_colors = custom_colors, bg_graph=bg_graph, alpha=alpha, savefig={'fname': figfile, 'format': figfmt}, fontname=fontname, font_path = font_path,
                      show=False, ylabel=False, compounded=compounded,
                      prepare_returns=False)
     tpl = tpl.replace('{{monthly_dist}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
     _plots.daily_returns(returns, grayscale=grayscale,
-                         figsize=(8, 3), subtitle=False,
+                         figsize=(8, 3), subtitle=False, fontname=fontname, font_path = font_path,
                          custom_colors = custom_colors, bg_graph=bg_graph, alpha=alpha,
                          savefig={'fname': figfile, 'format': figfmt},
                          show=False, ylabel=False,
@@ -188,7 +188,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
 
     if benchmark is not None:
         figfile = _utils._file_stream()
-        _plots.rolling_beta(returns, benchmark, grayscale=grayscale,
+        _plots.rolling_beta(returns, benchmark, grayscale=grayscale, fontname=fontname, font_path = font_path,
                             figsize=(8, 3), subtitle=False,
                             custom_colors = custom_colors, bg_graph=bg_graph, alpha=alpha,
                             window1=win_half_year, window2=win_year,
@@ -198,7 +198,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
         tpl = tpl.replace('{{rolling_beta}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
-    _plots.rolling_volatility(returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name,
+    _plots.rolling_volatility(returns, benchmark, grayscale=grayscale, strategy_name=strategy_name, benchmark_name = benchmark_name, fontname=fontname, font_path = font_path,
                               custom_colors = custom_colors, bg_graph=bg_graph, alpha=alpha, figsize=(8, 3), subtitle=False,
                               savefig={'fname': figfile, 'format': figfmt},
                               show=False, ylabel=False, period=win_half_year,
@@ -206,7 +206,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     tpl = tpl.replace('{{rolling_vol}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
-    _plots.rolling_sharpe(returns, grayscale=grayscale, strategy_name=strategy_name, 
+    _plots.rolling_sharpe(returns, grayscale=grayscale, strategy_name=strategy_name, fontname=fontname, font_path = font_path,
                           custom_colors = custom_colors, bg_graph=bg_graph, alpha=alpha, figsize=(8, 3), subtitle=False,
                           savefig={'fname': figfile, 'format': figfmt},
                           show=False, ylabel=False, period=win_half_year,
@@ -214,7 +214,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     tpl = tpl.replace('{{rolling_sharpe}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
-    _plots.rolling_sortino(returns, grayscale=grayscale, strategy_name=strategy_name, 
+    _plots.rolling_sortino(returns, grayscale=grayscale, strategy_name=strategy_name, fontname=fontname, font_path = font_path,
                            custom_colors = custom_colors, bg_graph=bg_graph, alpha=alpha, figsize=(8, 3), subtitle=False,
                            savefig={'fname': figfile, 'format': figfmt},
                            show=False, ylabel=False, period=win_half_year,
@@ -222,7 +222,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     tpl = tpl.replace('{{rolling_sortino}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
-    _plots.drawdowns_periods(returns, grayscale=grayscale,
+    _plots.drawdowns_periods(returns, grayscale=grayscale, fontname=fontname, font_path = font_path,
                              custom_colors = custom_colors, bg_graph=bg_graph, alpha=alpha, figsize=(8, 4), subtitle=False,
                              savefig={'fname': figfile, 'format': figfmt},
                              show=False, ylabel=False, compounded=compounded,
@@ -230,21 +230,21 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     tpl = tpl.replace('{{dd_periods}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
-    _plots.drawdown(returns, grayscale=grayscale, strategy_name= strategy_name,
+    _plots.drawdown(returns, grayscale=grayscale, strategy_name= strategy_name, fontname=fontname, font_path = font_path,
                     custom_colors = custom_colors, bg_graph=bg_graph, alpha=alpha, figsize=(8, 3), subtitle=False,
                     savefig={'fname': figfile, 'format': figfmt},
                     show=False, ylabel=False)
     tpl = tpl.replace('{{dd_plot}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
-    _plots.monthly_heatmap(returns, grayscale=grayscale, bg_graph=bg_graph, alpha=alpha,
+    _plots.monthly_heatmap(returns, grayscale=grayscale, bg_graph=bg_graph, alpha=alpha, fontname=fontname, font_path = font_path,
                            figsize=(8, 4), cbar=False,
                            savefig={'fname': figfile, 'format': figfmt},
                            show=False, ylabel=False, compounded=compounded)
     tpl = tpl.replace('{{monthly_heatmap}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
-    _plots.distribution(returns, grayscale=grayscale, bg_graph=bg_graph, alpha=alpha,
+    _plots.distribution(returns, grayscale=grayscale, bg_graph=bg_graph, alpha=alpha, fontname=fontname, font_path = font_path,
                         figsize=(8, 4), subtitle=False,
                         savefig={'fname': figfile, 'format': figfmt},
                         show=False, ylabel=False, compounded=compounded,

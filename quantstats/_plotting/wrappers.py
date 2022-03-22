@@ -255,7 +255,7 @@ def earnings(returns, start_balance=1e5, mode="comp",
 
 def returns(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "Benchmark",
             custom_colors = None, bg_graph = "white", alpha = 1, grayscale=False, figsize=(10, 6),
-            fontname='Arial', lw=1.5,
+            fontname='Arial', lw=1.5, font_path =None, 
             match_volatility=False, compound=True, cumulative=True,
             resample=None, ylabel="Cumulative Returns",
             subtitle=True, savefig=None, show=True,
@@ -289,6 +289,7 @@ def returns(returns, benchmark=None, strategy_name = "Strategy", benchmark_name 
                                 lw=lw,
                                 figsize=figsize,
                                 fontname=fontname,
+                                font_path = font_path,
                                 grayscale=grayscale,
                                 subtitle=subtitle,
                                 savefig=savefig, show=show)
@@ -298,7 +299,7 @@ def returns(returns, benchmark=None, strategy_name = "Strategy", benchmark_name 
 
 def log_returns(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "Benchmark",
                 custom_colors = None, bg_graph = "white", alpha = 1, grayscale=False, figsize=(10, 5),
-                fontname='Arial', lw=1.5,
+                fontname='Arial', lw=1.5, font_path =None,
                 match_volatility=False, compound=True, cumulative=True,
                 resample=None, ylabel="Cumulative Returns",
                 subtitle=True, savefig=None, show=True,
@@ -335,6 +336,7 @@ def log_returns(returns, benchmark=None, strategy_name = "Strategy", benchmark_n
                                 lw=lw,
                                 figsize=figsize,
                                 fontname=fontname,
+                                font_path = font_path,
                                 grayscale=grayscale,
                                 subtitle=subtitle,
                                 savefig=savefig, show=show)
@@ -345,7 +347,7 @@ def log_returns(returns, benchmark=None, strategy_name = "Strategy", benchmark_n
 def daily_returns(returns,
                   grayscale=False, figsize=(10, 4),
                   custom_colors = None, bg_graph = "white", alpha = 1,
-                  fontname='Arial', lw=0.5,
+                  fontname='Arial', lw=0.5, font_path =None,
                   log_scale=False, ylabel="Returns",
                   subtitle=True, savefig=None, show=True,
                   prepare_returns=True):
@@ -364,6 +366,7 @@ def daily_returns(returns,
                                 lw=lw,
                                 figsize=figsize,
                                 fontname=fontname,
+                                font_path = font_path,
                                 grayscale=grayscale,
                                 subtitle=subtitle,
                                 savefig=savefig, show=show)
@@ -372,7 +375,7 @@ def daily_returns(returns,
 
 
 def yearly_returns(returns, benchmark=None, strategy_name="Strategy", benchmark_name = "Benchmark",
-                   fontname='Arial', grayscale=False, bg_graph = "white", alpha = 1,
+                   fontname='Arial', font_path =None, grayscale=False, bg_graph = "white", alpha = 1,
                    hlw=1.5, hlcolor="red", hllabel="",
                    match_volatility=False,
                    custom_colors = None, 
@@ -399,6 +402,7 @@ def yearly_returns(returns, benchmark=None, strategy_name="Strategy", benchmark_
 
     fig = _core.plot_returns_bars(returns, benchmark,
                                   fontname=fontname,
+                                  font_path = font_path,
                                   hline=returns.mean(),
                                   hlw=hlw,
                                   returns_label = strategy_name,
@@ -420,7 +424,7 @@ def yearly_returns(returns, benchmark=None, strategy_name="Strategy", benchmark_
         return fig
 
 
-def distribution(returns, fontname='Arial', grayscale=False, ylabel=True, 
+def distribution(returns, fontname='Arial', font_path =None, grayscale=False, ylabel=True, 
                  figsize=(10, 6), subtitle=True, compounded=True, bg_graph = "white", alpha = 1,
                  savefig=None, show=True,
                  prepare_returns=True):
@@ -429,6 +433,7 @@ def distribution(returns, fontname='Arial', grayscale=False, ylabel=True,
 
     fig = _core.plot_distribution(returns,
                                   fontname=fontname,
+                                  font_path = font_path,
                                   grayscale=grayscale,
                                   bg_graph=bg_graph, alpha=alpha,
                                   figsize=figsize,
@@ -440,7 +445,7 @@ def distribution(returns, fontname='Arial', grayscale=False, ylabel=True,
         return fig
 
 
-def histogram(returns, resample='M', fontname='Arial',
+def histogram(returns, resample='M', fontname='Arial', font_path =None,
               custom_colors = None, bg_graph = "white", alpha = 1, grayscale=False, figsize=(10, 5), ylabel=True,
               subtitle=True, compounded=True, savefig=None, show=True,
               prepare_returns=True):
@@ -465,6 +470,7 @@ def histogram(returns, resample='M', fontname='Arial',
                                 custom_colors= custom_colors,
                                 bg_graph=bg_graph, alpha=alpha,
                                 fontname=fontname,
+                                font_path = font_path,
                                 title="Distribution of %sReturns" % title,
                                 figsize=figsize,
                                 ylabel=ylabel,
@@ -474,7 +480,7 @@ def histogram(returns, resample='M', fontname='Arial',
 
 
 def drawdown(returns, grayscale=False, figsize=(10, 5),
-             custom_colors = None, bg_graph = "white", alpha = 1, strategy_name = "Strategy", fontname='Arial', lw=1, log_scale=False,
+             custom_colors = None, bg_graph = "white", alpha = 1, strategy_name = "Strategy", fontname='Arial', font_path =None, lw=1, log_scale=False,
              match_volatility=False, compound=False, ylabel="Drawdown",
              resample=None, subtitle=True, savefig=None, show=True):
 
@@ -489,7 +495,7 @@ def drawdown(returns, grayscale=False, figsize=(10, 5),
                                 log_scale=log_scale, resample=resample,
                                 fill=True, lw=lw, figsize=figsize,
                                 ylabel=ylabel,
-                                fontname=fontname, grayscale=grayscale,
+                                fontname=fontname, font_path = font_path, grayscale=grayscale,
                                 subtitle=subtitle,
                                 savefig=savefig, show=show)
     if not show:
@@ -497,7 +503,7 @@ def drawdown(returns, grayscale=False, figsize=(10, 5),
 
 
 def drawdowns_periods(returns, periods=5, lw=1.5, log_scale=False,
-                      custom_colors = None, bg_graph = "white", alpha = 1, fontname='Arial', grayscale=False, figsize=(10, 5),
+                      custom_colors = None, bg_graph = "white", alpha = 1, fontname='Arial', font_path =None, grayscale=False, figsize=(10, 5),
                       ylabel=True, subtitle=True, compounded=True,
                       savefig=None, show=True,
                       prepare_returns=True):
@@ -511,6 +517,7 @@ def drawdowns_periods(returns, periods=5, lw=1.5, log_scale=False,
                                        bg_graph=bg_graph, alpha=alpha,
                                        log_scale=log_scale,
                                        fontname=fontname,
+                                       font_path = font_path,
                                        grayscale=grayscale,
                                        figsize=figsize,
                                        ylabel=ylabel,
@@ -525,7 +532,7 @@ def rolling_beta(returns, benchmark,
                  custom_colors = None, bg_graph = "white", alpha = 1,
                  window1=126, window1_label="6-Months",
                  window2=252, window2_label="12-Months",
-                 lw=1.5, fontname='Arial', grayscale=False,
+                 lw=1.5, fontname='Arial', font_path =None, grayscale=False,
                  figsize=(10, 3), ylabel=True,
                  subtitle=True, savefig=None, show=True,
                  prepare_returns=True):
@@ -542,6 +549,7 @@ def rolling_beta(returns, benchmark,
                                   custom_colors = custom_colors,
                                   bg_graph=bg_graph, alpha=alpha,
                                   fontname=fontname,
+                                  font_path = font_path,
                                   grayscale=grayscale,
                                   lw=lw,
                                   figsize=figsize,
@@ -555,7 +563,7 @@ def rolling_beta(returns, benchmark,
 def rolling_volatility(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "Benchmark",
                        custom_colors = None, bg_graph = "white", alpha = 1, period=126, period_label="6-Months",
                        periods_per_year=252,
-                       lw=1.5, fontname='Arial', grayscale=False,
+                       lw=1.5, fontname='Arial', font_path =None, grayscale=False,
                        figsize=(10, 3), ylabel="Volatility",
                        subtitle=True, savefig=None, show=True):
 
@@ -576,6 +584,7 @@ def rolling_volatility(returns, benchmark=None, strategy_name = "Strategy", benc
                                    benchmark_label=benchmark_name,
                                    title='Rolling Volatility (%s)' % period_label,
                                    fontname=fontname,
+                                   font_path = font_path,
                                    grayscale=grayscale,
                                    lw=lw,
                                    figsize=figsize,
@@ -588,7 +597,7 @@ def rolling_volatility(returns, benchmark=None, strategy_name = "Strategy", benc
 def rolling_sharpe(returns, benchmark=None, strategy_name = "Strategy", rf=0., 
                    custom_colors = None, bg_graph = "white", alpha = 1, period=126, period_label="6-Months",
                    periods_per_year=252,
-                   lw=1.25, fontname='Arial', grayscale=False,
+                   lw=1.25, fontname='Arial', font_path =None, grayscale=False,
                    figsize=(10, 3), ylabel="Sharpe",
                    subtitle=True, savefig=None, show=True):
 
@@ -610,6 +619,7 @@ def rolling_sharpe(returns, benchmark=None, strategy_name = "Strategy", rf=0.,
                                    returns_label= strategy_name,
                                    title='Rolling Sharpe (%s)' % period_label,
                                    fontname=fontname,
+                                   font_path = font_path,
                                    grayscale=grayscale,
                                    lw=lw,
                                    figsize=figsize,
@@ -622,7 +632,7 @@ def rolling_sharpe(returns, benchmark=None, strategy_name = "Strategy", rf=0.,
 def rolling_sortino(returns, benchmark=None, strategy_name = "Strategy", rf=0.,
                     custom_colors = None, bg_graph = "white", alpha = 1, period=126, period_label="6-Months",
                     periods_per_year=252,
-                    lw=1.25, fontname='Arial', grayscale=False,
+                    lw=1.25, fontname='Arial', font_path =None, grayscale=False,
                     figsize=(10, 3), ylabel="Sortino",
                     subtitle=True, savefig=None, show=True):
 
@@ -644,6 +654,7 @@ def rolling_sortino(returns, benchmark=None, strategy_name = "Strategy", rf=0.,
                                    returns_label= strategy_name,
                                    title='Rolling Sortino (%s)' % period_label,
                                    fontname=fontname,
+                                   font_path = font_path,
                                    grayscale=grayscale,
                                    lw=lw,
                                    figsize=figsize,
@@ -656,7 +667,7 @@ def rolling_sortino(returns, benchmark=None, strategy_name = "Strategy", rf=0.,
 def monthly_heatmap(returns, annot_size=10, figsize=(10, 5),
                     cbar=True, square=False, bg_graph = "white", alpha = 1,
                     compounded=True, eoy=False,
-                    grayscale=False, fontname='Arial',
+                    grayscale=False, fontname='Arial', font_path =None,
                     ylabel=True, savefig=None, show=True):
 
     # colors, ls, alpha = _core._get_colors(grayscale)
