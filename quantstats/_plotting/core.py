@@ -119,7 +119,7 @@ def plot_returns_bars(returns, benchmark=None,
 
     # use a more precise date string for the x axis locations in the toolbar
     fig.suptitle(title+"\n", y=.95, fontweight="bold", fontname=fontname,
-                 fontsize=14, color="white")
+                 fontsize=14, color=colors[6])
 
     if subtitle:
         ax.set_title("\n%s - %s                   " % (
@@ -268,7 +268,7 @@ def plot_timeseries(returns, benchmark=None,
     ax.spines['left'].set_visible(False)
 
     fig.suptitle(title+"\n", y=.95, fontweight="bold", fontname=fontname,
-                 fontsize=14, color="white")
+                 fontsize=14, color=colors[6])
 
     if subtitle:
         ax.set_title("\n%s - %s                  " % (
@@ -391,7 +391,7 @@ def plot_histogram(returns, resample="M", bins=20,
         # set font BeVietnamPro-SemiBold.ttf
         _plt.rcParams['font.family'] = fontname
     fig.suptitle(title+"\n", y=.95, fontweight="bold", fontname=fontname,
-                 fontsize=14, color="white")
+                 fontsize=14, color=custom_colors[6])
 
     if subtitle:
         ax.set_title("\n%s - %s                   " % (
@@ -507,7 +507,7 @@ def plot_rolling_stats(returns, benchmark=None, title="",
     # use a more precise date string for the x axis locations in the toolbar
     # ax.fmt_xdata = _mdates.DateFormatter('%Y-%m-%d')\
     fig.suptitle(title+"\n", y=.95, fontweight="bold", fontname=fontname,
-                 fontsize=14, color="white")
+                 fontsize=14, color=colors[6])
 
     if subtitle:
         ax.set_title("\n%s - %s                   " % (
@@ -593,7 +593,7 @@ def plot_rolling_beta(returns, benchmark,
     ax.spines['left'].set_visible(False)
 
     fig.suptitle(title+"\n", y=.95, fontweight="bold", fontname=fontname,
-                 fontsize=14, color="white")
+                 fontsize=14, color=colors[6])
 
     if subtitle:
         ax.set_title("\n%s - %s                   " % (
@@ -699,7 +699,7 @@ def plot_longest_drawdowns(returns, periods=5, lw=1.5,
 
     fig.suptitle("Worst %.0f Drawdown Periods\n" %
                  periods, y=.95, fontweight="bold", fontname=fontname,
-                 fontsize=14, color="white")
+                 fontsize=14, color=custom_colors[6])
     if subtitle:
         ax.set_title("\n%s - %s                   " % (
             returns.index.date[:1][0].strftime('%e %b \'%y'),
@@ -769,7 +769,7 @@ def plot_longest_drawdowns(returns, periods=5, lw=1.5,
     return None
 
 
-def plot_distribution(returns, figsize=(10, 6), bg_graph = "white", alpha = 1,
+def plot_distribution(returns, figsize=(10, 6), bg_graph = "white", alpha = 1, custom_colors = None,
                       fontname='Arial', font_path = None, grayscale=False, ylabel=True,
                       subtitle=True, compounded=True,
                       savefig=None, show=True):
@@ -816,7 +816,7 @@ def plot_distribution(returns, figsize=(10, 6), bg_graph = "white", alpha = 1,
 
     fig.suptitle("Return Quantiles\n", y=.95,
                  fontweight="bold", fontname=fontname,
-                 fontsize=14, color="white")
+                 fontsize=14, color=custom_colors[6])
 
     if subtitle:
         ax.set_title("\n%s - %s                   " % (
@@ -843,8 +843,8 @@ def plot_distribution(returns, figsize=(10, 6), bg_graph = "white", alpha = 1,
     ax.patch.set_facecolor(bg_graph)
     ax.patch.set_alpha(alpha)
     ax.grid(False)
-    ax.tick_params(axis='x', colors="white")   
-    ax.tick_params(axis='y', colors="white")
+    ax.tick_params(axis='x', colors=custom_colors[3])   
+    ax.tick_params(axis='y', colors=custom_colors[3])
 
     try:
         _plt.subplots_adjust(hspace=0)

@@ -153,7 +153,7 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
 
     if benchmark is not None:
         figfile = _utils._file_stream()
-        _plots.returns(returns, benchmark, match_volatility=True, strategy_name=strategy_name, benchmark_name = benchmark_name, fontname=fontname, font_path = font_path,
+        _plots.log_returns(returns, benchmark, match_volatility=True, strategy_name=strategy_name, benchmark_name = benchmark_name, fontname=fontname, font_path = font_path,
                        custom_colors = custom_colors, bg_graph=bg_graph, alpha=alpha, grayscale=grayscale, figsize=(8, 4), subtitle=False,
                        savefig={'fname': figfile, 'format': figfmt},
                        show=False, ylabel=False, cumulative=compounded,
@@ -237,14 +237,14 @@ def html(returns, benchmark=None, strategy_name = "Strategy", benchmark_name = "
     tpl = tpl.replace('{{dd_plot}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
-    _plots.monthly_heatmap(returns, grayscale=grayscale, bg_graph=bg_graph, alpha=alpha, fontname=fontname, font_path = font_path,
+    _plots.monthly_heatmap(returns, grayscale=grayscale, bg_graph=bg_graph, custom_colors=custom_colors, alpha=alpha, fontname=fontname, font_path = font_path,
                            figsize=(8, 4), cbar=False,
                            savefig={'fname': figfile, 'format': figfmt},
                            show=False, ylabel=False, compounded=compounded)
     tpl = tpl.replace('{{monthly_heatmap}}', _embed_figure(figfile, figfmt))
 
     figfile = _utils._file_stream()
-    _plots.distribution(returns, grayscale=grayscale, bg_graph=bg_graph, alpha=alpha, fontname=fontname, font_path = font_path,
+    _plots.distribution(returns, grayscale=grayscale, bg_graph=bg_graph, alpha=alpha, custom_colors = custom_colors, fontname=fontname, font_path = font_path,
                         figsize=(8, 4), subtitle=False,
                         savefig={'fname': figfile, 'format': figfmt},
                         show=False, ylabel=False, compounded=compounded,

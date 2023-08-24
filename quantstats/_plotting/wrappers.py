@@ -425,7 +425,7 @@ def yearly_returns(returns, benchmark=None, strategy_name="Strategy", benchmark_
 
 
 def distribution(returns, fontname='Arial', font_path =None, grayscale=False, ylabel=True, 
-                 figsize=(10, 6), subtitle=True, compounded=True, bg_graph = "white", alpha = 1,
+                 figsize=(10, 6), subtitle=True, compounded=True, bg_graph = "white", alpha = 1, custom_colors = None,
                  savefig=None, show=True,
                  prepare_returns=True):
     if prepare_returns:
@@ -436,6 +436,7 @@ def distribution(returns, fontname='Arial', font_path =None, grayscale=False, yl
                                   font_path = font_path,
                                   grayscale=grayscale,
                                   bg_graph=bg_graph, alpha=alpha,
+                                  custom_colors=custom_colors,
                                   figsize=figsize,
                                   ylabel=ylabel,
                                   subtitle=subtitle,
@@ -666,7 +667,7 @@ def rolling_sortino(returns, benchmark=None, strategy_name = "Strategy", rf=0.,
 
 def monthly_heatmap(returns, annot_size=10, figsize=(10, 5),
                     cbar=True, square=False, bg_graph = "white", alpha = 1,
-                    compounded=True, eoy=False,
+                    compounded=True, eoy=False, custom_colors = None,
                     grayscale=False, fontname='Arial', font_path =None,
                     ylabel=True, savefig=None, show=True):
 
@@ -696,7 +697,7 @@ def monthly_heatmap(returns, annot_size=10, figsize=(10, 5),
     
 
     ax.set_title('      Monthly Returns (%)\n', fontsize=14, y=.995,
-                 fontname=fontname, fontweight='bold', color='white')
+                 fontname=fontname, fontweight='bold', color=custom_colors[6])
 
     # _sns.set(font_scale=.9)
     ax = _sns.heatmap(returns, ax=ax, annot=True, center=0,
@@ -719,8 +720,8 @@ def monthly_heatmap(returns, annot_size=10, figsize=(10, 5),
     ax.patch.set_alpha(alpha)
     _plt.xticks(rotation=0, fontsize=annot_size*1.2)
     _plt.yticks(rotation=0, fontsize=annot_size*1.2)
-    ax.tick_params(axis='x', colors="white")   
-    ax.tick_params(axis='y', colors="white")
+    ax.tick_params(axis='x', colors=custom_colors[3])   
+    ax.tick_params(axis='y', colors=custom_colors[3])
 
     try:
         _plt.subplots_adjust(hspace=0, bottom=0, top=1)
